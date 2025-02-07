@@ -1,0 +1,20 @@
+[07-Feb-2025 01:21:24 UTC] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20230831
+PHP    compiled with module API=20220829
+These options need to match
+ in Unknown on line 0
+[07-Feb-2025 01:21:24 UTC] PHP Warning:  PHP Startup: sqlite3: Unable to initialize module
+Module compiled with module API=20230831
+PHP    compiled with module API=20220829
+These options need to match
+ in Unknown on line 0
+[07-Feb-2025 01:22:54 UTC] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20230831
+PHP    compiled with module API=20220829
+These options need to match
+ in Unknown on line 0
+[07-Feb-2025 01:22:54 UTC] PHP Warning:  PHP Startup: sqlite3: Unable to initialize module
+Module compiled with module API=20230831
+PHP    compiled with module API=20220829
+These options need to match
+ in Unknown on line 0

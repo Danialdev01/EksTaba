@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo $location_index?>/src/css/output.css">
+    <link rel="stylesheet" href="<?php echo $location_index?>/src/assets/css/output.css">
     <link rel="stylesheet" href="<?php echo $location_index?>/node_modules/flowbite/dist/flowbite.min.css">
     <link rel="shortcut icon" href="<?php echo $location_index?>/src/assets/images/favicon.ico" type="image/x-icon">
 
@@ -34,7 +34,8 @@
             theme: {
                 extend: {
                     colors: {
-                        blue: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+                        blue: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"},
+                        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
                     }
                 },
                 fontFamily: {
@@ -92,7 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/css/tw-elements.min.css" /> -->
-    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <!-- <script src="https://cdn.tailwindcss.com/3.3.0"></script> -->
     <link rel="stylesheet" href="<?php echo $location_index?>/node_modules/tw-elements/css/tw-elements.min.css">
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" /> -->
 
@@ -108,7 +109,7 @@
     <title>
         <?php
             if(isset($title)){echo $title;}
-            else{echo "MyCookingInventory";}
+            else{echo "EksTaba";}
         ?>
     </title>
 </head>
