@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule ^documentation/?$ https://github.com/Danialdev01/EksTaba [R=301,L]
