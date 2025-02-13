@@ -10,6 +10,9 @@
     $dbname = $env['DBNAME'];
     $secret_key = $env['SECRET_KEY'];
     $ai_api_key = $env['AI_API_KEY'];
+    $clientId = $env['GOOGLE_CLIENT_ID'];
+    $clientSecret = $env['GOOGLE_CLIENT_SECRET'];
+    $redirectUri = $env['REDIRECT_URI'];
 
     $dsn = 'mysql:host='. $hostname .';dbname='. $dbname;
     

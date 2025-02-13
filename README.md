@@ -32,4 +32,5 @@
 
 - Tailwindcss
 - Flowbite
-- Composer: Google SSO
+- Composer: phpmailer/phpmailer
+- Composer: google/apiclient

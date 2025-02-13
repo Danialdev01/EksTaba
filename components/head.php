@@ -21,7 +21,7 @@
             scroll-behavior: smooth;
         }
         main{
-            min-height: 90dvh;
+            min-height: 100dvh;
         }
         /* ::-webkit-scrollbar {
             display: none;
