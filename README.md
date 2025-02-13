@@ -28,8 +28,10 @@
 - Admin boleh menambah dan mengemaskini guru
 - Admin boleh kemaskini kelas
 
+## Database 
+![text](documentation/diagrams/erd.png)
 ## Perisian yang digunakan
-
+- PDO PHP
 - Tailwindcss
 - Flowbite
 - Composer: phpmailer/phpmailer
