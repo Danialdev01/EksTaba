@@ -26,12 +26,19 @@
 
     }
 
-    //@ Validate input
-    function validateInput($data) {
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+    function randomKod($length) {
+
+        if ($length < 1 || $length > 26) {
+            throw new InvalidArgumentException("Error.");
+        }
+
+        $letters = range('a', 'z');
+        shuffle($letters);
+        $uniqueSequence = implode('', array_slice($letters, 0, $length));
+
+        return $uniqueSequence;
     }
+    
 
     //@ Log Activity
     function log_activity_message($location, $text){
@@ -56,7 +63,7 @@
         
         //* Log text
         $text .= "\n$file_content";
-        file_put_contents($location, $text);
+        // file_put_contents($location, $text);
 
     }
 
@@ -85,6 +92,49 @@
         }
 
         return $formatted_text;
+    }
+
+    //@ Encode obj
+    function encodeObj($id, $message, $status){
+
+        $output = [
+            "id" => $id,
+            "message" => $message,
+            "status" => $status
+        ];
+        return json_encode($output);
+
+    }
+
+    //@ Validate input
+    function validateInput($data) {
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    function addJson($originalObj, $newObj){
+        $originalObj = json_decode($originalObj);
+        $newObj = json_decode($newObj);
+        $mergedObject = (object) array_merge((array) $originalObj, (array) $newObj);
+        return json_encode($mergedObject);
+    }
+
+    function validateFunction($log_location, $error_redirect, $output){
+
+        $output = json_decode($output, true);
+        if($output['status'] != "success"){
+
+            log_activity_message($log_location, $output['message']);
+            alert_message("error", $output['message']);
+            header("Location:$error_redirect");
+
+            return false;
+        }
+        else{
+            return $output;
+        }
+
     }
 
 ?>

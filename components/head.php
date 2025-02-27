@@ -30,7 +30,7 @@
     </style>
     <script>
         tailwind.config = {
-            // darkMode: 'false',
+            darkMode: 'false',
             theme: {
                 extend: {
                     colors: {
@@ -88,6 +88,7 @@
     <link rel="stylesheet" href="<?php echo $location_index?>/node_modules/datatables.net-dt/css/dataTables.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
@@ -99,7 +100,7 @@
 
     <style>
         input{
-          color: black !important;
+          /* color: black !important; */
         }
 
         [class^="select-dropdown-container-"] {
