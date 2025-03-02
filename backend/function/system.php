@@ -63,7 +63,7 @@
         
         //* Log text
         $text .= "\n$file_content";
-        // file_put_contents($location, $text);
+        file_put_contents($location, $text);
 
     }
 
