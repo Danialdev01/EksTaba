@@ -35,7 +35,7 @@
 
             // if ada audio tambah audio
             if(isset($_POST['audio_nota'])){
-                addAudioNota($nota['id_nota'], $_FILES['audio_nota'], "../src/uploads/nota/gambar/", $connect);
+                addAudioNota($nota['id_nota'], $_FILES['audio_nota'], "../src/uploads/nota/audio/", $connect);
             }
 
             if($nota['status'] == "success"){

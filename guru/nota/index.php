@@ -18,8 +18,8 @@
             <center>
                 <?php 
 
-                    $kuiz_sql = $connect->prepare("SELECT * FROM kuiz WHERE id_guru = ?");
-                    $kuiz_sql->execute([$id_guru]);
+                    $nota_sql = $connect->prepare("SELECT * FROM nota WHERE id_guru = ?");
+                    $nota_sql->execute([$id_guru]);
                 ?>
 
                 <?php include('../../components/guru/nota-table.php')?>

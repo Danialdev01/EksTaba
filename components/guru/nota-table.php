@@ -30,24 +30,13 @@
             </tr>
         </thead>
         <tbody>
-            <?php while($kuiz = $kuiz_sql->fetch(PDO::FETCH_ASSOC)){?>
+            <?php while($nota = $nota_sql->fetch(PDO::FETCH_ASSOC)){?>
                 <tr class="bg-primary-400">
-                    <td class="font-medium text-secondary-900 whitespace-nowrap danktext-white"><?php echo htmlspecialchars(strtoupper($kuiz['kod_kuiz']))?></td>
-                    <td class="text-white"><?php echo htmlspecialchars($kuiz['created_date_kuiz']) ?></td>
+                    <td class="font-medium text-secondary-900 whitespace-nowrap danktext-white"><?php echo htmlspecialchars($nota['tajuk_nota'])?></td>
+                    <td class="text-white"><?php echo htmlspecialchars($nota['created_date_nota']) ?></td>
 
-                    <?php 
-
-                        $bil_murid_menjawab_sql = $connect->prepare("SELECT * FROM hasil_kuiz WHERE id_kuiz = ?");
-                        $bil_murid_menjawab_sql->execute([$kuiz['id_kuiz']]);
-
-                        $i = 0;
-                        while($bil_murid_menjawab = $bil_murid_menjawab_sql->fetch(PDO::FETCH_ASSOC)){
-                            $i++;
-                        }
-                        
-                    ?>
                     <td>
-                        <a href="<?php echo $location_index?>/guru/kuiz/lihat-kuiz.php?id_kuiz=<?php echo $kuiz['id_kuiz']?>">
+                        <a href="<?php echo $location_index?>/guru/nota/lihat-nota.php?id_nota=<?php echo $nota['id_nota']?>">
                             <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Lihat</button>
                         </a>
                     </td>

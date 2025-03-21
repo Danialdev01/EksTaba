@@ -21,7 +21,7 @@
                     <?php $location_index = "."; include('./components/modals/login.php')?>
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup">
+                    <img src="./src/assets/images/book-image.png" alt="book image">
                 </div>                
             </div>
         </section>

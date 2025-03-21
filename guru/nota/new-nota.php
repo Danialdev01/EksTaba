@@ -22,6 +22,7 @@
 
                     <input type="hidden" name="token" value="<?php echo $token?>">
                     <input type="hidden" name="id_guru" value="<?php echo $guru['id_guru']; ?>">
+                    <input type="hidden" name="id_kelas" value="1">
 
                     <div class="max-w-sm mx-auto">
 
@@ -45,7 +46,7 @@
                             <input name="audio_nota" class="block w-full text-sm text-gray-900 border border-blue-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none" id="file_input" type="file">
                         </div>
 
-                        <div class="mb-5">
+                        <!-- <div class="mb-5">
                             <select id="id_kelas" name="id_kelas" class="bg-secondary-50 border border-secondary-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500">
                                 <option selected value="-1">Pilih Kelas Yang Terlibat</option>
                                 <option value="0">Tiada</option>
@@ -62,7 +63,7 @@
 
                                 <?php }?>
                             </select>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="mb-5">
 

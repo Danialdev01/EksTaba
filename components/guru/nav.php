@@ -37,11 +37,11 @@
                 Dashboard
                 </a>
             </li>
-            <li class="shrink-0">
+            <!-- <li class="shrink-0">
                 <a href="<?php echo $location_index?>/guru/kelas/" title="" class="flex text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Kelas
                 </a>
-            </li>
+            </li> -->
             <li class="shrink-0">
                 <a href="<?php echo $location_index?>/guru/kuiz/" title="" class="flex text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Kuiz
@@ -168,13 +168,13 @@
         <div id="ecommerce-navbar-menu-1" class="bg-secondary-50 dankbg-secondary-700 dankborder-secondary-600 border border-secondary-200 rounded-lg py-3 hidden px-4 mt-4">
         <ul class="text-secondary-900 danktext-white text-sm font-medium danktext-white space-y-3">
             <li>
-            <a href="<?php echo $location_index?>/user/" class="hover:text-primary-700 -500">Dashboard</a>
+            <a href="<?php echo $location_index?>/guru/" class="hover:text-primary-700 text-primary-400">Dashboard</a>
             </li>
             <li>
-            <a href="<?php echo $location_index?>/ingredients" class="hover:text-primary-700 -500">Ingredients</a>
+            <a href="<?php echo $location_index?>/guru/kuiz/" class="hover:text-primary-700 text-primary-400">Kuiz</a>
             </li>
             <li>
-            <a href="<?php echo $location_index?>/user/orderings" class="hover:text-primary-700 -500">Orderings</a>
+            <a href="<?php echo $location_index?>/guru/nota/" class="hover:text-primary-700 text-primary-400">Nota</a>
             </li>
             <!-- <li>
             <a href="<?php echo $location_index?>/user/reports" class="hover:text-primary-700 -500">Reports</a>

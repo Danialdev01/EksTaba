@@ -1,6 +1,6 @@
 <?php
 
-    if(!isset($_GET['id_kuiz'])){
+    if(!isset($_GET['id_nota'])){
 
         header("Location:../");
     }
@@ -25,10 +25,10 @@
                 $guru_sql->execute([$id_guru]);
                 $guru = $guru_sql->fetch(PDO::FETCH_ASSOC);
 
-                $id_kuiz = validateInput($_GET['id_kuiz']);
-                $kuiz_sql = $connect->prepare("SELECT * FROM kuiz WHERE id_kuiz = ?");
-                $kuiz_sql->execute([$id_kuiz]);
-                $kuiz = $kuiz_sql->fetch(PDO::FETCH_ASSOC);
+                $id_nota = validateInput($_GET['id_nota']);
+                $nota_sql = $connect->prepare("SELECT * FROM nota WHERE id_nota = ?");
+                $nota_sql->execute([$id_nota]);
+                $nota = $nota_sql->fetch(PDO::FETCH_ASSOC);
 
             ?>
 
@@ -38,16 +38,38 @@
 
                     <form class="max-w-md mx-auto">
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="nama_kuiz" id="nama_kuiz" value="<?php echo $kuiz['nama_kuiz'] ?>" class="block py-2.5 px-0 w-full text-sm text-secondary-900 bg-transparent border-0 border-b-2 border-secondary-300 appearance-none danktext-white dankborder-secondary-600 dankfocus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
-                            <label for="nama_kuiz" class="peer-focus:font-medium absolute text-sm text-white danktext-secondary-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-600 peer-focus:-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Kuiz</label>
+                            <input type="text" name="tajuk_nota" id="tajuk_nota" value="<?php echo $nota['tajuk_nota'] ?>" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-secondary-300 appearance-none danktext-white dankborder-secondary-600 dankfocus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
+                            <label for="tajuk_nota" class="peer-focus:font-medium absolute text-sm text-white danktext-secondary-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-600 peer-focus:-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tajuk Nota</label>
                         </div>
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="pengenalan_kuiz" id="pengenalan_kuiz" value="<?php echo $kuiz['pengenalan_kuiz']?>" class="block py-2.5 px-0 w-full text-sm text-secondary-900 bg-transparent border-0 border-b-2 border-secondary-300 appearance-none danktext-white dankborder-secondary-600 dankfocus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
-                            <label for="pengenalan_kuiz" class="peer-focus:font-medium absolute text-sm text-white danktext-secondary-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pengenalan Kuiz (Tema)</label>
+                            <input type="text" name="teks_nota" id="teks_nota" value="<?php echo $nota['teks_nota']?>" class="block py-2.5 px-0 w-full text-sm text-secondary-900 bg-transparent border-0 border-b-2 border-secondary-300 appearance-none danktext-white dankborder-secondary-600 dankfocus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
+                            <label for="teks_nota" class="peer-focus:font-medium absolute text-sm text-white danktext-secondary-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pengenalan Kuiz (Tema)</label>
                         </div>
 
+
+                        <?php 
+
+                            if($nota['gambar_nota'] != NULL){
+                                ?>
+
+                                <img src="<?php echo $nota['gambar_nota'] ?>" alt="Gambar Nota">
+
+                                <?php
+                            }
+
+                            if($nota['audio_nota'] != NULL){
+                                ?>
+
+
+
+                                <?php
+                            }
+
+                        ?>
+
+
                         <div class="relative z-0 w-full mb-5 group">
-                            <select  disabled id="jenis_kuiz" name="jenis_kuiz" class="bg-secondary-50 border border-secondary-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500">
+                            <select  disabled id="jenis_kuiz" name="jenis_kuiz" class="bg-secondary-50 border border-secondary-300 text-secondary-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500">
                                 <option selected value="0">Pilih Jenis Kuiz</option>
                                 <option <?php echo $kuiz['jenis_kuiz'] == '1' ? 'selected' : '1'; ?> >Objektif</option>
                                 <option <?php echo $kuiz['jenis_kuiz'] == '2' ? 'selected' : '2'; ?> >Isi tempat kosong</option>
@@ -65,8 +87,8 @@
                                     ?>
 
                                         <div class="p-2">
-                                            <div class="max-w-lg p-6 bg-primary-400 border border-secondary-200 rounded-lg shadow-sm dankbg-secondary-800 dankborder-secondary-700">
-                                                <h5 class="mb-4 text-lg tracking-tight text-white danktext-white"><?php echo htmlspecialchars($soalan_kuiz['teks_soalan'])?></h5>
+                                            <div class="max-w-lg p-6 bg-white border border-secondary-200 rounded-lg shadow-sm dankbg-secondary-800 dankborder-secondary-700">
+                                                <h5 class="mb-4 text-lg tracking-tight text-secondary-900 danktext-white"><?php echo htmlspecialchars($soalan_kuiz['teks_soalan'])?></h5>
 
                                                 <div class="jawapan pb-3">
                                                     <?php 
@@ -79,12 +101,12 @@
 
                                                     ?>
                                                     <div class="jawapan-betul pb-1">
-                                                        <p class="text-white danktext-white">Jawapan betul : 
+                                                        <p class="text-black danktext-white">Jawapan betul : 
                                                             <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-green-900 danktext-green-300"><?php echo $jawapan['jawapan_betul']?></span>
                                                         </p>
                                                     </div>
                                                     <div class="jawapan-salah">
-                                                        <p class="text-white danktext-white">Jawapan salah : 
+                                                        <p class="text-black danktext-white">Jawapan salah : 
                                                             <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_1']?></span>
                                                             <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_2']?></span>
                                                             <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_3']?></span>
