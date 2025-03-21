@@ -12,6 +12,7 @@
     
     if(isset($_GET['code'])){
 
+        echo "got code ". $GET['code'];
         // init google client
         $client = new Google\Client;
         $client->setClientId($clientId);
@@ -20,6 +21,8 @@
 
         // get access token
         $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+
+        echo "thing";
     
         // check if access token is available 
         if (!isset($token["access_token"])) {
