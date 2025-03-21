@@ -10,10 +10,10 @@
 <?php $location_index = "../.."; include('../../components/head.php');?>
 
 <body>
-    <main class="dark:bg-gray-900">
+    <main class="dankbg-plrimary-200">
         <?php $location_index = "../.."; include('../../components/guru/nav.php');?>
 
-        <section class="bg-white dark:bg-gray-900">
+        <section>
 
             <?php 
                 require_once('../../backend/function/system.php');
@@ -38,16 +38,16 @@
 
                     <form class="max-w-md mx-auto">
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="nama_kuiz" id="nama_kuiz" value="<?php echo $kuiz['nama_kuiz'] ?>" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="nama_kuiz" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Kuiz</label>
+                            <input type="text" name="nama_kuiz" id="nama_kuiz" value="<?php echo $kuiz['nama_kuiz'] ?>" class="block py-2.5 px-0 w-full text-sm text-secondary-900 bg-transparent border-0 border-b-2 border-secondary-300 appearance-none danktext-white dankborder-secondary-600 dankfocus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
+                            <label for="nama_kuiz" class="peer-focus:font-medium absolute text-sm text-secondary-500 danktext-secondary-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-600 peer-focus:-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Kuiz</label>
                         </div>
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="pengenalan_kuiz" id="pengenalan_kuiz" value="<?php echo $kuiz['pengenalan_kuiz']?>" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="pengenalan_kuiz" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pengenalan Kuiz (Tema)</label>
+                            <input type="text" name="pengenalan_kuiz" id="pengenalan_kuiz" value="<?php echo $kuiz['pengenalan_kuiz']?>" class="block py-2.5 px-0 w-full text-sm text-secondary-900 bg-transparent border-0 border-b-2 border-secondary-300 appearance-none danktext-white dankborder-secondary-600 dankfocus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
+                            <label for="pengenalan_kuiz" class="peer-focus:font-medium absolute text-sm text-secondary-500 danktext-secondary-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pengenalan Kuiz (Tema)</label>
                         </div>
 
                         <div class="relative z-0 w-full mb-5 group">
-                            <select  disabled id="jenis_kuiz" name="jenis_kuiz" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <select  disabled id="jenis_kuiz" name="jenis_kuiz" class="bg-secondary-50 border border-secondary-300 text-secondary-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500">
                                 <option selected value="0">Pilih Jenis Kuiz</option>
                                 <option <?php echo $kuiz['jenis_kuiz'] == '1' ? 'selected' : '1'; ?> >Objektif</option>
                                 <option <?php echo $kuiz['jenis_kuiz'] == '2' ? 'selected' : '2'; ?> >Isi tempat kosong</option>
@@ -65,8 +65,8 @@
                                     ?>
 
                                         <div class="p-2">
-                                            <div class="max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                                                <h5 class="mb-4 text-lg tracking-tight text-gray-900 dark:text-white"><?php echo htmlspecialchars($soalan_kuiz['teks_soalan'])?></h5>
+                                            <div class="max-w-lg p-6 bg-white border border-secondary-200 rounded-lg shadow-sm dankbg-secondary-800 dankborder-secondary-700">
+                                                <h5 class="mb-4 text-lg tracking-tight text-secondary-900 danktext-white"><?php echo htmlspecialchars($soalan_kuiz['teks_soalan'])?></h5>
 
                                                 <div class="jawapan pb-3">
                                                     <?php 
@@ -79,21 +79,21 @@
 
                                                     ?>
                                                     <div class="jawapan-betul pb-1">
-                                                        <p class="text-black dark:text-white">Jawapan betul : 
-                                                            <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300"><?php echo $jawapan['jawapan_betul']?></span>
+                                                        <p class="text-black danktext-white">Jawapan betul : 
+                                                            <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-green-900 danktext-green-300"><?php echo $jawapan['jawapan_betul']?></span>
                                                         </p>
                                                     </div>
                                                     <div class="jawapan-salah">
-                                                        <p class="text-black dark:text-white">Jawapan salah : 
-                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300"><?php echo $jawapan['jawapan_salah_1']?></span>
-                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300"><?php echo $jawapan['jawapan_salah_2']?></span>
-                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300"><?php echo $jawapan['jawapan_salah_3']?></span>
+                                                        <p class="text-black danktext-white">Jawapan salah : 
+                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_1']?></span>
+                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_2']?></span>
+                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_3']?></span>
                                                         </p>
                                                     </div>
                                                 </div>
 
                                                 <?php $id_kuiz = $soalan_kuiz['id_kuiz']; $location_index = "../.."; include('../../components/modals/kemaskini-soalan-modal.php')?>
-                                                <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
+                                                <!-- <p class="mb-3 font-normal text-secondary-700 danktext-secondary-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
                                             </div>
                                         </div>
 
@@ -106,7 +106,7 @@
                         </div>
 
                         <center>
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kemaskini</button>
+                            <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Kemaskini</button>
                         </center>
                     </form>
                     <br>

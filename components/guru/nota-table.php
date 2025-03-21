@@ -1,11 +1,11 @@
-<div class="kelas-table max-w-4xl p-4 pt-10">
+<div class="nota-table max-w-4xl p-4 pt-10">
 
     <table id="default-table" class="rounded-lg text-black">
         <thead>
             <tr>
                 <th>
                     <span class="flex items-center">
-                        Kod Kuiz
+                        Tajuk Nota 
                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                         </svg>
@@ -13,15 +13,7 @@
                 </th>
                 <th data-type="date" data-format="YYYY/DD/MM">
                     <span class="flex items-center">
-                        Tarikh Hasil
-                        <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                        </svg>
-                    </span>
-                </th>
-                <th>
-                    <span class="flex items-center">
-                        Bil Jawapan
+                        Tarikh Cipta
                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                         </svg>
@@ -54,7 +46,6 @@
                         }
                         
                     ?>
-                    <td class="text-white"><?php echo $i?></td>
                     <td>
                         <a href="<?php echo $location_index?>/guru/kuiz/lihat-kuiz.php?id_kuiz=<?php echo $kuiz['id_kuiz']?>">
                             <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Lihat</button>
@@ -69,8 +60,8 @@
 
 <div class="new-kuiz">
 
-    <a href="<?php echo $location_index ?>/guru/kuiz/new-kuiz.php">
-        <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dankbg-primary-600 dankhover:bg-primary-700 focus:outline-none dankfocus:ring-primary-800">Kuiz Baru</button>
+    <a href="<?php echo $location_index ?>/guru/nota/new-nota.php">
+        <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dankbg-primary-600 dankhover:bg-primary-700 focus:outline-none dankfocus:ring-primary-800">Nota Baru</button>
     </a>
 
 </div>

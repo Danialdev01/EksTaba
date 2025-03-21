@@ -18,29 +18,17 @@
             <center>
                 <?php 
 
-                    $kelas_sql = $connect->prepare("SELECT * FROM kelas WHERE id_guru = ?");
-                    $kelas_sql->execute([$id_guru]);
+                    $kuiz_sql = $connect->prepare("SELECT * FROM kuiz WHERE id_guru = ?");
+                    $kuiz_sql->execute([$id_guru]);
                 ?>
 
-                <?php $location_index = "../.."; include("../../components/guru/kelas-table.php")?>
+                <?php include('../../components/guru/nota-table.php')?>
 
-                <div class="new-kelas">
-                    <?php $location_index = "../.."; include("../../components/modals/new-kelas-modal.php")?>
-                </div>
             </center>
 
         </section>
 
     </main>
-
-    <script>
-        if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-            const dataTable = new simpleDatatables.DataTable("#default-table", {
-                searchable: false,
-                perPageSelect: false
-            });
-        }
-    </script>
 
     <?php $location_index = "../.."; include('../../components/footer.php')?>
 

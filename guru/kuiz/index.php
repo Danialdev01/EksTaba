@@ -1,10 +1,10 @@
 <?php $location_index = "../.."; include('../../components/head.php');?>
 
 <body>
-    <main class="dark:bg-gray-900">
+    <main class="dankbg-plrimary-200">
         <?php $location_index = "../.."; include('../../components/guru/nav.php');?>
 
-        <section class="bg-white dark:bg-gray-900">
+        <section>
 
             <?php 
                 $guru_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);

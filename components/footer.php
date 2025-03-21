@@ -1,7 +1,7 @@
 <footer> 
 
     <center>
-        <p class="pt-5 pb-5 mb-4 text-sm text-center text-gray-500 dark:bg-gray-800 dark:text-gray-400 sm:mb-0">
+        <p class="pt-5 pb-5 mb-4 text-sm text-center text-secondary-500 bg-secondary-800 danktext-secondary-400 sm:mb-0">
             &copy; <?php echo date("Y"); ?> <a href="danialirfan.dev" class="hover:underline" target="_blank"> Danial</a>. All rights reserved.
         </p>
     </center>

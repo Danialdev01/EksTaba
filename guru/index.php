@@ -1,10 +1,10 @@
 <?php $location_index = ".."; include('../components/head.php');?>
 
 <body>
-    <main class="dark:bg-gray-900">
+    <main class="dankbg-plrimary-200">
         <?php $location_index = ".."; include('../components/guru/nav.php');?>
 
-        <section class="bg-white dark:bg-gray-900">
+        <section>
 
             <?php 
                 $guru_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);
@@ -16,7 +16,7 @@
             ?>
 
             <center>
-                <h1 class="dark:text-white text-black text-2xl pt-10">Hi <?php echo htmlspecialchars(ucfirst($guru['nama_guru']))?></h1>
+                <h1 class="text-white text-2xl pt-10">Hi <?php echo htmlspecialchars(ucfirst($guru['nama_guru']))?></h1>
 
                 <?php 
                     $kuiz_sql = $connect->prepare("SELECT * FROM kuiz WHERE id_guru = ?");

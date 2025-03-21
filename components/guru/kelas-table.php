@@ -42,7 +42,7 @@
             
                 while($kelas = $kelas_sql->fetch(PDO::FETCH_ASSOC)){?>
                 <tr>
-                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white"><?php echo htmlspecialchars(strtoupper($kelas['kod_kelas']))?></td>
+                    <td class="font-medium text-secondary-900 whitespace-nowrap danktext-white"><?php echo htmlspecialchars(strtoupper($kelas['kod_kelas']))?></td>
                     <td><?php echo htmlspecialchars($kelas['created_date_kelas']) ?></td>
 
                     <?php 
@@ -59,7 +59,7 @@
                     <td><?php echo $bil_murid_mendaftar?></td>
                     <td>
                         <a href="<?php echo $location_index?>/guru/kelas/lihat-kelas.php?id_kelas=<?php echo $kelas['id_kelas']?>">
-                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Lihat</button>
+                            <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Lihat</button>
                         </a>
                     </td>
 

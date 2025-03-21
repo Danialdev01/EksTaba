@@ -92,10 +92,10 @@ $_SESSION['start'] = false;
         .correct { background-color: #4CAF50; }
         .incorrect { background-color: #F44336; }
     </style>
-    <main class="dark:bg-gray-900">
+    <main class="dankbg-plrimary-200">
         <?php $location_index = "../.."; include('../../components/murid/nav.php');?>
 
-        <section class="bg-white dark:bg-gray-900">
+        <section>
 
             <?php 
                 $murid_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);
@@ -110,8 +110,8 @@ $_SESSION['start'] = false;
                 
                 <div class="pt-20">
 
-                    <div class="dark:text-white block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h2 class="dark:text-white text-xl font-bold mb-4"><?php echo $currentQuestion['teks_soalan']; ?></h2>
+                    <div class="danktext-white block max-w-sm p-6 bg-white border border-secondary-200 rounded-lg shadow-sm hover:bg-secondary-100 dankbg-secondary-800 dankborder-secondary-700 dankhover:bg-secondary-700">
+                        <h2 class="danktext-white text-xl font-bold mb-4"><?php echo $currentQuestion['teks_soalan']; ?></h2>
                         <form method="POST" id="quiz-form">
                             <?php foreach ($currentQuestion['options'] as $index => $option): ?>
                                 <button type="submit" name="answer" value="<?php echo $index; ?>" 
@@ -124,7 +124,7 @@ $_SESSION['start'] = false;
                                             echo 'incorrect';
                                         }
                                     } else {
-                                        echo 'bg-blue-500 text-white';
+                                        echo 'bg-primary-500 text-white';
                                     }
                                     ?>" id="option-<?php echo $index; ?>">
                                     <?php echo $option; ?>
@@ -132,7 +132,7 @@ $_SESSION['start'] = false;
                             <?php endforeach; ?>
                         </form>
                         <?php if (isset($_SESSION['last_answer'])): ?>
-                            <p class="mt-4 text-center text-gray-600">
+                            <p class="mt-4 text-center text-secondary-600">
                                 <?php echo $_SESSION['last_answer'] == 'correct' ? 'Correct!' : 'Wrong!'; ?>
                             </p>
                             <script>
