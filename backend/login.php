@@ -14,7 +14,6 @@
 
         try{
 
-            echo "got code ". $GET['code'];
             // init google client
             $client = new Google\Client;
             $client->setClientId($clientId);
