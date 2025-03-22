@@ -1,6 +1,6 @@
 <?php
 
-function createNota($id_kelas, $id_guru, $tajuk_nota, $teks_nota, $connect){
+function createNota($id_kelas, $id_guru, $tajuk_nota, $teks_nota, $image, $audio, $connect){
 
     $kod_kuiz = "K". randomKod(5);
 
@@ -10,13 +10,15 @@ function createNota($id_kelas, $id_guru, $tajuk_nota, $teks_nota, $connect){
     $teks_nota = validateInput($teks_nota);
     $created_date_nota = date("Y-m-d");
     
-    $new_nota_sql = $connect->prepare("INSERT INTO nota(id_nota, id_kelas, id_kuiz, id_guru, tajuk_nota, teks_nota, gambar_nota, audio_nota, created_date_nota, status_nota) VALUES (NULL, ? , NULL , ? ,  ?  , ? , NULL , NULL , ? , 1)");
+    $new_nota_sql = $connect->prepare("INSERT INTO nota(id_nota, id_kelas, id_kuiz, id_guru, tajuk_nota, teks_nota, gambar_nota, audio_nota, created_date_nota, status_nota) VALUES (NULL, ? , NULL , ? ,  ?  , ? , ? , ? , ? , 1)");
 
     $new_nota_sql->execute([
         $id_kelas,
         $id_guru,
         $tajuk_nota,
         $teks_nota,
+        $image,
+        $audio,
         $created_date_nota
     ]);
 
@@ -34,40 +36,31 @@ function createNota($id_kelas, $id_guru, $tajuk_nota, $teks_nota, $connect){
     return addJson($status, $nota);
 }
 
-function addImageNota($id_nota, $file, $destination, $connect){
+function addImageNota($file, $destination, $connect){
 
-    $upload_file = uploadFile($file, $destination);
-
-    if($upload_file['status'] == "success"){
-
-        $file_destination = $upload_file['destination'];
-        
-        $image_nota_sql = $connect->prepare("UPDATE nota SET gambar_nota = ? WHERE id_nota = ?");
-
-        $image_nota_sql->execute([
-            $file_destination,
-            $id_nota
-        ]);
+    try{
+        $upload_file = uploadFile($file, $destination);
+        $file = json_decode($upload_file, true);
+        return $file['FileName'];
 
     }
+    catch(Exception $e){
+        var_dump($e);
+    }
+
 
 }
 
-function addAudioNota($id_nota, $file, $destination, $connect){
+function addAudioNota($file, $destination, $connect){
 
-    $upload_file = uploadFile($file, $destination);
+    try{
+        $upload_file = uploadFile($file, $destination);
+        $file = json_decode($upload_file, true);
+        return $file['FileName'];
 
-    if($upload_file['status'] == "success"){
-
-        $file_destination = $upload_file['destination'];
-        
-        $audio_nota_sql = $connect->prepare("UPDATE nota SET audio_nota = ? WHERE id_nota = ?");
-
-        $audio_nota_sql->execute([
-            $file_destination,
-            $id_nota
-        ]);
-
+    }
+    catch(Exception $e){
+        var_dump($e);
     }
 
 }

@@ -32,7 +32,7 @@ function uploadFile($file, $type_destination){
                 //* Image is correct
                 $newImageName = uniqid();
                 $newImageName .= '.' . $imageExtension;
-                $destination = __DIR__ . "/../uploads/" . $type_destination . "/" . $newImageName;
+                $destination = __DIR__ . "/../../src/uploads" . $type_destination . "/" . $newImageName;
                 move_uploaded_file($TmpName, $destination);
 
                 $status = encodeObj("200", "Berjaya Tambah Kelas", "success");

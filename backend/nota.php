@@ -24,19 +24,27 @@
             // isset($_POST['audio_nota'])  
         ){
                 
-            $hasil = createNota($_POST['id_kelas'], $_POST['id_guru'], $_POST['tajuk_nota'], $_POST['teks_nota'], $connect);
+            $image = NULL;
+            $audio = NULL;
+
+            if(isset($_FILES['gambar_nota'])){
+                $image = addImageNota($_FILES['gambar_nota'], "/nota/gambar/", $connect);
+            }
+            else{
+                $image = NULL;
+            }
+
+            if(isset($_FILES['audio_nota'])){
+                $audio = addAudioNota($_FILES['audio_nota'], "/nota/audio/", $connect);
+            }
+            else{
+                $audio = NULL;
+            }
+
+
+            $hasil = createNota($_POST['id_kelas'], $_POST['id_guru'], $_POST['tajuk_nota'], $_POST['teks_nota'], $image, $audio, $connect);
 
             $nota = validateFunction("../log/user_activity_log", "../", $hasil);
-
-            // if ada image tambah image
-            if(isset($_POST['gambar_nota'])){
-                addImageNota($nota['id_nota'], $_FILES['gambar_nota'], "../src/uploads/nota/gambar/", $connect);
-            }
-
-            // if ada audio tambah audio
-            if(isset($_POST['audio_nota'])){
-                addAudioNota($nota['id_nota'], $_FILES['audio_nota'], "../src/uploads/nota/audio/", $connect);
-            }
 
             if($nota['status'] == "success"){
                 

@@ -52,7 +52,7 @@
                             if($nota['gambar_nota'] != NULL){
                                 ?>
 
-                                <img src="<?php echo $nota['gambar_nota'] ?>" alt="Gambar Nota">
+                                <img src="../../src/uploads/nota/gambar/<?php echo $nota['gambar_nota'] ?>" alt="Gambar Nota">
 
                                 <?php
                             }
@@ -60,75 +60,24 @@
                             if($nota['audio_nota'] != NULL){
                                 ?>
 
+                                <script type="module" src="https://cdn.jsdelivr.net/npm/player.style/tailwind-audio/+esm"></script>
+
+                                <media-theme-tailwind-audio>
+                                <audio
+                                    slot="media"
+                                    src="https://stream.mux.com/fXNzVtmtWuyz00xnSrJg4OJH6PyNo6D02UzmgeKGkP5YQ/low.mp4"
+                                    playsinline
+                                    crossorigin
+                                ></audio>
+                                </media-theme-tailwind-audio>
 
 
                                 <?php
                             }
 
                         ?>
-
-
-                        <div class="relative z-0 w-full mb-5 group">
-                            <select  disabled id="jenis_kuiz" name="jenis_kuiz" class="bg-secondary-50 border border-secondary-300 text-secondary-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500">
-                                <option selected value="0">Pilih Jenis Kuiz</option>
-                                <option <?php echo $kuiz['jenis_kuiz'] == '1' ? 'selected' : '1'; ?> >Objektif</option>
-                                <option <?php echo $kuiz['jenis_kuiz'] == '2' ? 'selected' : '2'; ?> >Isi tempat kosong</option>
-                            </select>
-                        </div>
-
-                        <div class="soalan-kuiz-container pb-4">
-                            
-                            <?php
-
-                                $soalan_kuiz_sql = $connect->prepare("SELECT * FROM soalan WHERE id_kuiz = ?");
-                                $soalan_kuiz_sql->execute([$id_kuiz]);
-
-                                while($soalan_kuiz = $soalan_kuiz_sql->fetch(PDO::FETCH_ASSOC)){
-                                    ?>
-
-                                        <div class="p-2">
-                                            <div class="max-w-lg p-6 bg-white border border-secondary-200 rounded-lg shadow-sm dankbg-secondary-800 dankborder-secondary-700">
-                                                <h5 class="mb-4 text-lg tracking-tight text-secondary-900 danktext-white"><?php echo htmlspecialchars($soalan_kuiz['teks_soalan'])?></h5>
-
-                                                <div class="jawapan pb-3">
-                                                    <?php 
-
-                                                        $skema_jawapan_sql = $connect->prepare("SELECT * FROM skema_jawapan WHERE id_soalan = ?");
-                                                        $skema_jawapan_sql->execute([$soalan_kuiz['id_soalan']]);
-                                                        $skema_jawapan = $skema_jawapan_sql->fetch(PDO::FETCH_ASSOC);
-
-                                                        $jawapan = json_decode($skema_jawapan['teks_jawapan'], true);
-
-                                                    ?>
-                                                    <div class="jawapan-betul pb-1">
-                                                        <p class="text-black danktext-white">Jawapan betul : 
-                                                            <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-green-900 danktext-green-300"><?php echo $jawapan['jawapan_betul']?></span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="jawapan-salah">
-                                                        <p class="text-black danktext-white">Jawapan salah : 
-                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_1']?></span>
-                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_2']?></span>
-                                                            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dankbg-red-900 danktext-red-300"><?php echo $jawapan['jawapan_salah_3']?></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <?php $id_kuiz = $soalan_kuiz['id_kuiz']; $location_index = "../.."; include('../../components/modals/kemaskini-soalan-modal.php')?>
-                                                <!-- <p class="mb-3 font-normal text-secondary-700 danktext-secondary-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
-                                            </div>
-                                        </div>
-
-
-                                    <?php
-                                }
-
-                            ?>
-
-                        </div>
-
                         <center>
-                            <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Kemaskini</button>
+                            <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Kemaskini Nota</button>
                         </center>
                     </form>
                     <br>
