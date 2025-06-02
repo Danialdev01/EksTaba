@@ -26,19 +26,24 @@
         ){
                 
             $hasil = createKuiz($_POST['nama_kuiz'], $_POST['pengenalan_kuiz'], $_POST['jenis_kuiz'], $_POST['id_kelas'], $_POST['id_guru'], $_POST['tarikh_tamat_kuiz'], $connect);
-
+            
             $kuiz = validateFunction("../log/user_activity_log", "../", $hasil);
-
+            
             
             if($kuiz['status'] == "success"){
                 
                 for($i = 0;$_POST['bil_soalan_kuiz'] > $i; $i++){
-
+                    
                     if($kuiz['jenis_kuiz'] == "1"){
-
-                        $output = SoalanObjectiveAI($kuiz['id_kuiz'], $ai_api_key, $kuiz['pengenalan_kuiz'], $connect);
+                        
+                        try{
+                            $output = SoalanObjectiveAI($kuiz['id_kuiz'], $ai_api_key, $kuiz['pengenalan_kuiz'], $connect);
+                        }
+                        catch(Exception $e){
+                            echo $e;
+                        }
                     }
-
+                    
                 }
 
                 $id_kuiz = $kuiz['id_kuiz'];
@@ -84,9 +89,71 @@
             ]);
 
             $id_hasil = $connect->lastInsertId();
+
+            // get kuiz
+            $hasil_soalan_sql = $connect->prepare("SELECT * FROM hasil_kuiz WHERE id_hasil_kuiz = :id_hasil_kuiz");
+            $hasil_soalan_sql->execute([
+                ":id_hasil_kuiz" => $id_hasil
+            ]);
+            $hasil_soalan = $hasil_soalan_sql->fetch(PDO::FETCH_ASSOC);
+
+            $kuiz_sql = $connect->prepare("SELECT * FROM kuiz WHERE id_kuiz = :id_kuiz");
+            $kuiz_sql->execute([
+                ":id_kuiz" => $hasil_soalan['id_kuiz']
+            ]);
+            $kuiz = $kuiz_sql->fetch(PDO::FETCH_ASSOC);
+
+            $questions = [];
+            $i = 0;
+
+            $soalan_sql = $connect->prepare("SELECT * FROM soalan WHERE id_kuiz = :id_kuiz");
+            $soalan_sql->execute([
+                ":id_kuiz" => $kuiz['id_kuiz']
+            ]);
+
+            while($soalan = $soalan_sql->fetch(PDO::FETCH_ASSOC)){
+
+                $skema_jawapan_soalan_sql = $connect->prepare("SELECT * FROM skema_jawapan WHERE id_soalan = :id_soalan");
+                $skema_jawapan_soalan_sql->execute([
+                    ":id_soalan" => $soalan['id_soalan']
+                ]);
+                $skema_jawapan_soalan = $skema_jawapan_soalan_sql->fetch(PDO::FETCH_ASSOC);
+
+                $jawapan = json_decode($skema_jawapan_soalan['teks_jawapan'], true);
+
+                if($jawapan['jawapan_betul'] == "."){$index_betul = 0;}
+                if($jawapan['jawapan_betul'] == "?"){$index_betul = 1;}
+                if($jawapan['jawapan_betul'] == "!"){$index_betul = 2;}
+                if($jawapan['jawapan_betul'] == ","){$index_betul = 3;}
+                $questions[] = [
+                    'id_soalan' => $i,
+                    'teks_soalan' => $soalan['teks_soalan'],
+                    'options' => ['.', '?', '!', ','],
+                    'correct' => $index_betul
+                ];
+
+                $i++;
+            }
+
+            $_SESSION['questions'] = $questions;
+
             log_activity_message("../log/user_activity_log", "Berjaya hasil laporan kuiz");
             alert_message("success", "Berjaya hasilkan kuiz");
             header("Location:../murid/kuiz/soalan.php?id_hasil=$id_hasil");   
+        }
+    }
+    else if(isset($_POST['hapus_kuiz'])){
+        if(isset($_POST['id_kuiz'])){
+            $id_kuiz = validateInput($_POST['id_kuiz']);
+
+            $hapus_kuiz_sql = $connect->prepare("UPDATE kuiz SET status_kuiz = 0 WHERE id_kuiz = :id_kuiz");
+            $hapus_kuiz_sql->execute([
+                ":id_kuiz" => $id_kuiz
+            ]);
+            
+            alert_message("success", "Berjaya hapus kuiz");
+            header("Location:../guru/kuiz/");   
+
         }
     }
     else{

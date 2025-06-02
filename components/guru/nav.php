@@ -1,9 +1,9 @@
 <?php
 
+
     include("$location_index/backend/function/system.php");
     include("$location_index/backend/function/user.php");
     include("$location_index/backend/models/guru.php");
-
     $verify = verifySessionGuru($secret_key, $connect);
 
     $verify = json_decode($verify, true);
@@ -48,10 +48,15 @@
                 </a>
             </li>
             <li class="shrink-0">
+                <a href="<?php echo $location_index?>/guru/ar/" title="" class="flex text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
+                AR Board
+                </a>
+            </li>
+            <!-- <li class="shrink-0">
                 <a href="<?php echo $location_index?>/guru/nota/" title="" class="flex text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Nota
                 </a>
-            </li>
+            </li> -->
             <!-- <li class="shrink-0">
                 <a href="<?php echo $location_index?>/user/reports" title="" class="text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Reports

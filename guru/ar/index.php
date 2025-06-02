@@ -23,7 +23,7 @@
                     $kuiz_sql->execute([$id_guru]);
                 ?>
 
-                <?php include('../../components/guru/kuiz-table.php')?>
+                <?php include('../../components/guru/ar-table.php')?>
 
             </center>
 

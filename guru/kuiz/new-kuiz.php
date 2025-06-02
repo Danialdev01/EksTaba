@@ -44,7 +44,8 @@
                             </select>
                         </div>
 
-                        <div class="mb-5">
+                        <input type="hidden" name="id_kelas" value="0">
+                        <!-- <div class="mb-5">
                             <select id="id_kelas" name="id_kelas" class="bg-secondary-50 border border-secondary-300 text-secondary-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500">
                                 <option selected value="-1">Pilih Kelas Yang Terlibat</option>
                                 <option value="0">Tiada</option>
@@ -61,7 +62,7 @@
 
                                 <?php }?>
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="mb-5">
 

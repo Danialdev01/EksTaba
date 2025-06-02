@@ -96,16 +96,17 @@
     </a-scene>
 
     <div class="button-container">
-        <a href="">
-            <button id="actionButton1" class="button">Kenalpasti penggunaan tanda titik</button>
-        </a>
-        <button id="actionButton2" class="button">Kenalpasti penggunaan tanda soal</button>
-        <button id="actionButton3" class="button">Kenalpasti penggunaan tanda koma</button>
-        <button id="actionButton4" class="button">Kenalpasti penggunaan tanda seru</button>
+        <button id="actionButton" class="button">Submit Jawapan</button>
+
+        <button id="resetButton" class="button">Mula semula</button>
     </div>
 
     <script>
-        let correctMarkersCount = 0; // Counter for correct markers
+        let correctMarkersCount1 = 0; // Counter for correct markers
+        let correctMarkersCount2 = 0; // Counter for correct markers
+        let correctMarkersCount3 = 0; // Counter for correct markers
+        let correctMarkersCount4 = 0; // Counter for correct markers
+        let correctMarkersCountSum = 0; // Counter for correct markers
         const markerCounter = document.getElementById('markerCounter');
 
         // Function to send points to the backend
@@ -115,7 +116,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ markerId: markerId, points: 1 }) // Send the marker ID and points to add
+                body: JSON.stringify({ markerId: markerId, points: 1 })
             })
             .then(response => response.json())
             .then(data =>{
@@ -126,25 +127,52 @@
             });
         }
 
+        // Function to submit final marks
+        function submitMarks() {
+            fetch('../backend/ar.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `markah=${correctMarkersCount1 + correctMarkersCount2 + correctMarkersCount3 + correctMarkersCount4}`
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = 'hasil.php?markah1=' + correctMarkersCount1 + '&markah2=' + correctMarkersCount2 + '&markah3=' + correctMarkersCount3 + '&markah4=' + correctMarkersCount4;
+                } else {
+                    console.error('Submission failed');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
         // Action button
-        const actionButton1 = document.querySelector('#actionButton1');
-        const actionButton2 = document.querySelector('#actionButton2');
-        const actionButton3 = document.querySelector('#actionButton3');
-        const actionButton4 = document.querySelector('#actionButton4');
+        const actionButton = document.querySelector('#actionButton');
+        const resetButton = document.querySelector('#resetButton');
+
+        actionButton.addEventListener('click', function() {
+            if (confirm('Adakah anda pasti untuk menghantar jawapan?')) {
+                submitMarks();
+            }
+        });
 
         //@ Marker 1
         const marker1 = document.querySelector('#marker1');
         marker1.addEventListener('markerFound', function() {
             console.log('Marker 1 found!');
-            actionButton1.style.display = 'block'; // Show button when marker is found
-            correctMarkersCount++; // Increment counter
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCount}`; // Update display
+            actionButton.style.display = 'block'; // Show button when marker is found
+            resetButton.style.display = 'block'; // Show button when marker is found
+            correctMarkersCount1++; // Increment counter
+            correctMarkersCountSum++; // Increment counter
+            markerCounter.innerText = `Correct Markers: ${correctMarkersCountSum}`; // Update display
             sendPoints('marker1');
         });
 
         marker1.addEventListener('markerLost', function() {
-            actionButton1.style.display = 'none'; // Hide button when marker is lost
-            correctMarkersCount--; // Decrement counter
+            // actionButton1.style.display = 'none'; // Hide button when marker is lost
+            // correctMarkersCount--; // Decrement countera
             markerCounter.innerText = `Correct Markers: ${correctMarkersCount}`; // Update display
             console.log('Marker 1 lost!');
         });
@@ -152,32 +180,35 @@
         //@ Marker 2
         const marker2 = document.querySelector('#marker2');
         marker2.addEventListener('markerFound', function() {
-            actionButton2.style.display = 'block'; // Show button when marker is found
+            actionButton.style.display = 'block'; // Show button when marker is found
+            resetButton.style.display = 'block'; // Show button when marker is found
             console.log('Marker 2 found!');
-            correctMarkersCount++; // Increment counter
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCount}`; // Update display
+            correctMarkersCount2++; // Increment counter
+            correctMarkersCountSum++; // Increment counter
+            markerCounter.innerText = `Correct Markers: ${correctMarkersCountSum}`; // Update display
             sendPoints('marker2');
         });
 
         marker2.addEventListener('markerLost', function() {
-            actionButton2.style.display = 'none'; // Hide button when marker is lost
             correctMarkersCount--; // Decrement counter
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCount}`; // Update display
+            markerCounter.innerText = `Correct Markers: ${correctMarkersCountSum}`; // Update display
             console.log('Marker 2 lost!');
         });
 
         //@ Marker 3
         const marker3 = document.querySelector('#marker3');
         marker3.addEventListener('markerFound', function() {
-            actionButton3.style.display = 'block'; // Show button when marker is found
+            actionButton.style.display = 'block'; // Show button when marker is found
+            resetButton.style.display = 'block'; // Show button when marker is found
             console.log('Marker 3 found!');
-            correctMarkersCount++; // Increment counter
-            markerCounter.innerText = `Soalan betul: ${correctMarkersCount}`; // Update display
+            correctMarkersCount3++; // Increment counter
+            correctMarkersCountSum++; // Increment counter
+            markerCounter.innerText = `Soalan betul: ${correctMarkersCountSum}`; // Update display
             sendPoints('marker3');
         });
 
         marker3.addEventListener('markerLost', function() {
-            actionButton3.style.display = 'none'; // Hide button when marker is lost
+            // actionButton.style.display = 'block'; // Show button when marker is found
             correctMarkersCount--; // Decrement counter
             markerCounter.innerText = `Soalan betul: ${correctMarkersCount}`; // Update display
             console.log('Marker 3 lost!');
@@ -186,19 +217,22 @@
         //@ Marker 4
         const marker4 = document.querySelector('#marker4');
         marker4.addEventListener('markerFound', function() {
-            actionButton4.style.display = 'block'; // Show button when marker is found
+            actionButton.style.display = 'block'; // Show button when marker is found
+            resetButton.style.display = 'block'; // Show button when marker is found
             console.log('Marker 4 found!');
-            correctMarkersCount++; // Increment counter
-            markerCounter.innerText = `Soalan betul: ${correctMarkersCount}`; // Update display
+            correctMarkersCount4++; // Increment counter
+            correctMarkersCountSum++; // Increment counter
+            markerCounter.innerText = `Soalan betul: ${correctMarkersCountSum}`; // Update display
             sendPoints('marker4');
         });
 
         marker4.addEventListener('markerLost', function() {
-            actionButton4.style.display = 'none'; // Hide button when marker is lost
+            // actionButton4.style.display = 'none'; // Hide button when marker is lost
             correctMarkersCount--; // Decrement counter
             markerCounter.innerText = `Soaaln betul: ${correctMarkersCount}`; // Update display
             console.log('Marker 4 lost!');
         });
+        
     </script>
 </body>
 </html>

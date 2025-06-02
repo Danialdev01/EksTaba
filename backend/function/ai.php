@@ -17,7 +17,9 @@ function generateAI($prompt, $ai_api_key){
         'content' => $prompt
       ]
     ],
-    'model' => 'llama3-8b-8192'
+    'model' => 'llama3-8b-8192',
+    'temperature' => 0.7,  // Added for more controlled outputs
+    'max_tokens' => 100    // Prevents overly long responses
   ];
   
   // Initialize a cURL session

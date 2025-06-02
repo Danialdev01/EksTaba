@@ -10,7 +10,7 @@
 
 <body>
     <main class="dankbg-plrimary-200">
-        <?php $location_index = "../.."; include('../../components/murid/nav.php');?>
+        <?php $location_index = "../.."; include('../../components/guru/nav.php');?>
 
         <section>
 
@@ -18,14 +18,15 @@
                 $murid_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);
                 $id_murid = $murid_value['id_user'];
                 
-                $murid_sql = $connect->prepare("SELECT * FROM murid WHERE id_murid = ?");
-                $murid_sql->execute([$id_murid]);
-                $murid = $murid_sql->fetch(PDO::FETCH_ASSOC);
                 
                 $id_hasil = validateInput($_GET['id_hasil']);
                 $hasil_kuiz_sql = $connect->prepare("SELECT * FROM hasil_kuiz WHERE id_hasil_kuiz = ?");
                 $hasil_kuiz_sql->execute([$id_hasil]);
                 $hasil_kuiz = $hasil_kuiz_sql->fetch(PDO::FETCH_ASSOC);
+                
+                $murid_sql = $connect->prepare("SELECT * FROM murid WHERE id_murid = ?");
+                $murid_sql->execute([$hasil_kuiz['id_murid']]);
+                $murid = $murid_sql->fetch(PDO::FETCH_ASSOC);
 
                 $kuiz_sql = $connect->prepare("SELECT * FROM kuiz WHERE id_kuiz = ?");
                 $kuiz_sql->execute([$hasil_kuiz['id_kuiz']]);

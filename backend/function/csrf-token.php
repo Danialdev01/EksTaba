@@ -8,10 +8,16 @@
     }
 
     function verifyCSRFToken($token) {
-        if (hash_equals($_SESSION['csrf_token'], $token)) {
-            return true;
-        } else {
-            return false;
+        if(isset($_SESSION['csrf_token'])){
+
+            if (hash_equals($_SESSION['csrf_token'], $token)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else{
+            generateCSRFToken();
         }
     }
 

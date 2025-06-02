@@ -12,6 +12,8 @@
 $_SESSION['current_question_index'] = 0;
 $_SESSION['start'] = true;
 $_SESSION['answers_data'] = NULL;
+$_SESSION['questions'] = NULL;
+$_SESSION['index_answering'] = 0;
 ?>
 
 <body>

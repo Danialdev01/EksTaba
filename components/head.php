@@ -124,6 +124,10 @@
         input{
           color: black !important;
         }
+        select, select option{
+          color: black !important;
+
+        }
 
         [class^="select-dropdown-container-"] {
             background-color: white !important; /* Example style */

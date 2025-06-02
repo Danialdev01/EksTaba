@@ -9,27 +9,9 @@ if(!isset($_GET['id_hasil'])){
 
 <?php
 
-// Sample questions and answers
-$questions = [
-    [
-        'id_soalan' => 1,
-        'teks_soalan' => 'Antara contoh teknologi hijau ialah panel solar(_) kereta elektrik dan tenaga nuklear',
-        'options' => ['.', ',', '?', '!'],
-        'correct' => 1 // Index of the correct answer
-    ],
-    [
-        'id_soalan' => 2,
-        'teks_soalan' => 'Teknologi hijau memperluas peluang kita untuk hidup lebih lestari dan mengurangkan bebanan alam sekitar(_)',
-        'options' => ['.', '?', '!', ','],
-        'correct' => 0
-    ],
-    [
-        'id_soalan' => 3,
-        'teks_soalan' => 'Adakah teknologi hijau baik untuk alam sekitar (_)',
-        'options' => ['.', '!', '?', ','],
-        'correct' => 2
-    ]
-];
+$questions = $_SESSION['questions'];
+
+// var_dump($questions);
 
 // Get the current question index
 $currentQuestionIndex = isset($_SESSION['current_question_index']) ? $_SESSION['current_question_index'] : 0;
@@ -38,10 +20,12 @@ if(!isset($_SESSION['current_question_index'])){
     $_SESSION['current_question_index'] = 0;
 }
 
+// echo $correctOption = $questions[$currentQuestionIndex]['correct'];
 // Check if the user submitted an answer
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedOption = $_POST['answer'];
     $correctOption = $questions[$currentQuestionIndex]['correct'];
+    $_SESSION['index_answering']++;
 
     // Store the result in the session
     $_SESSION['last_answer'] = ($selectedOption == $correctOption) ? 'correct' : 'incorrect';
@@ -61,9 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Get the current question
 $currentQuestion = $questions[$currentQuestionIndex];
 
+// echo $_SESSION['index_answering'];
+// echo "<br>";
 // echo count($questions);
 
-if(!(count($questions) <= ($_SESSION['current_question_index'] + 2)) && $_SESSION['start'] == false){
+if((count($questions) <= $_SESSION['index_answering']) && $_SESSION['start'] == false){
     $complete_answer = $_SESSION['answers_data'];
     
     // FIXME validate
@@ -81,6 +67,7 @@ if(!(count($questions) <= ($_SESSION['current_question_index'] + 2)) && $_SESSIO
         $id_hasil
     ]);
 
+    // echo "bertukar";
     echo '<script>setTimeout(function() {window.location.href = "./selesai.php?id_hasil='. $id_hasil .'"}, 0);</script>';
 }
 $_SESSION['start'] = false;
@@ -133,7 +120,7 @@ $_SESSION['start'] = false;
                         </form>
                         <?php if (isset($_SESSION['last_answer'])): ?>
                             <p class="mt-4 text-center text-secondary-600">
-                                <?php echo $_SESSION['last_answer'] == 'correct' ? 'Correct!' : 'Wrong!'; ?>
+                                <?php echo $_SESSION['last_answer'] == 'correct' ? 'Betul !' : 'Salah !'; ?>
                             </p>
                             <script>
                                 // Wait for 5 seconds before redirecting
@@ -167,5 +154,6 @@ if (isset($_SESSION['last_answer'])) {
     unset($_SESSION['last_answer']);
     unset($_SESSION['last_selected']);
     unset($_SESSION['last_correct']);
+    $_SESSION['peratus'] = null;
 }
 ?>
