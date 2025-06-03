@@ -69,7 +69,7 @@
                         $betul = 0;
 
                     ?>
-                    <h3 class="mb-4 text-2xl leading-none tracking-tight text-secondary-900 md:text-3xl lg:text-4xl danktext-white">Markah: <span class="font-extrabold"><?php echo $_SESSION['peratus']?> %</span></h3>
+                    <h3 class="mb-4 text-2xl leading-none tracking-tight text-secondary-900 md:text-3xl lg:text-4xl danktext-white">Markah: <span class="font-extrabold"><?php echo round($_SESSION['peratus'])?> %</span></h3>
                     <div class="max-w-4xl justify-center soalan-kuiz-container pb-4">
                         <?php
 
