@@ -202,7 +202,47 @@
                                         <tr>
                                             <td class="font-medium whitespace-nowrap text-white"><?php echo $hasil_murid['nama_murid']?></td>
                                             <td class="text-white"><?php echo $hasil_kuiz['created_date_hasil_murid']?></td>
-                                            <td class="text-white">10%</td>
+
+                                            <?php 
+
+                                                $bli_soalan = 0;
+                                                $betul = 0;
+                                                $soalan_kuiz_sql = $connect->prepare("SELECT * FROM soalan WHERE id_kuiz = ?");
+                                                $soalan_kuiz_sql->execute([$kuiz['id_kuiz']]);
+                                                while($soalan_kuiz = $soalan_kuiz_sql->fetch(PDO::FETCH_ASSOC)){
+                                                    
+                                                    $bli_soalan++;
+
+                                                    $skema_jawapan_sql = $connect->prepare("SELECT * FROM skema_jawapan WHERE id_soalan = ?");
+                                                    $skema_jawapan_sql->execute([$soalan_kuiz['id_soalan']]);
+                                                    $skema_jawapan = $skema_jawapan_sql->fetch(PDO::FETCH_ASSOC);
+
+                                                    $jawapan = json_decode($skema_jawapan['teks_jawapan'], true);
+
+                                                    $hasil_murid = json_decode($hasil_kuiz['markah_hasil_murid'], true);
+                                                    // var_dump($hasil_murid);
+                                                    $jawapan_jenis = "Tidak dijawab";
+
+                                                    // Check if $hasil_murid is an array and if the index exists
+                                                    if(is_array($hasil_murid) && isset($hasil_murid[$bli_soalan - 1])) {
+                                                        if(isset($hasil_murid[$bli_soalan - 1]['selected'])) {
+                                                            $selected = $hasil_murid[$bli_soalan - 1]['selected'];
+                                                            
+                                                            if($selected == 0){$jawapan_jenis = ".";}
+                                                            elseif($selected == 1){$jawapan_jenis = "?";}
+                                                            elseif($selected == 2){$jawapan_jenis = "!";}
+                                                            elseif($selected == 3){$jawapan_jenis = ",";}
+                                                            else{$jawapan_jenis = "salah";}
+                                                        }
+                                                    }
+
+                                                    if($jawapan_jenis == $jawapan['jawapan_betul']){
+                                                        $betul++;
+                                                    }
+                                                }
+
+                                            ?>
+                                            <td class="text-white"><?php echo round(($betul / $bli_soalan) * 100);?>%</td>
                                             <td>
                                                 <a href="./selesai.php?id_hasil=<?php echo $hasil_kuiz['id_hasil_kuiz']?>">
                                                     <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Lihat</button>
