@@ -14,6 +14,7 @@ $_SESSION['start'] = true;
 $_SESSION['answers_data'] = NULL;
 $_SESSION['questions'] = NULL;
 $_SESSION['index_answering'] = 0;
+$_SESSION['markah'] = 0;
 ?>
 
 <body>

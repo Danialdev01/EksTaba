@@ -49,6 +49,9 @@ $currentQuestion = $questions[$currentQuestionIndex];
 // echo "<br>";
 // echo count($questions);
 
+// markah 
+// $_SESSION['markah'] = 0;
+
 if((count($questions) <= $_SESSION['index_answering']) && $_SESSION['start'] == false){
     $complete_answer = $_SESSION['answers_data'];
     
@@ -67,12 +70,31 @@ if((count($questions) <= $_SESSION['index_answering']) && $_SESSION['start'] == 
         $id_hasil
     ]);
 
-    // echo "bertukar";
+    // cari markah
+    $cari_markah_sql = $connect->prepare("SELECT markah_murid FROM murid WHERE id_murid = :id_murid");
+    $cari_markah_sql->execute([
+        ":id_murid"=> $hasil_kuiz['id_murid']
+    ]);
+    $cari_markah = $cari_markah_sql->fetch(PDO::FETCH_ASSOC);
+
+    $set_markah = 0;
+    if($cari_markah['markah_murid'] + $_SESSION['markah'] >= 0){
+        $set_markah = $cari_markah['markah_murid'] + $_SESSION['markah'] + 1;
+    }
+
+    // update markah
+    $update_markah_sql = $connect->prepare("UPDATE murid SET markah_murid = :markah_murid WHERE id_murid = :id_murid");
+    $update_markah_sql->execute([
+        ":markah_murid" => $set_markah,
+        ":id_murid" => $hasil_kuiz['id_murid']
+    ]);
+
     echo '<script>setTimeout(function() {window.location.href = "./selesai.php?id_hasil='. $id_hasil .'"}, 0);</script>';
 }
 $_SESSION['start'] = false;
 
-// echo $_SESSION['current_question_index'];
+// echo "session markah";
+// echo $_SESSION['markah'];
 ?>
 <body>
     <style>
@@ -107,8 +129,10 @@ $_SESSION['start'] = false;
                                     if (isset($_SESSION['last_answer'])) {
                                         if ($_SESSION['last_answer'] == 'correct' && $index == $_SESSION['last_correct']) {
                                             echo 'correct';
+                                            $_SESSION['markah']+= 1;
                                         } elseif ($_SESSION['last_answer'] == 'incorrect' && $index == $_SESSION['last_selected']) {
                                             echo 'incorrect';
+                                            $_SESSION['markah']-= 1;
                                         }
                                     } else {
                                         echo 'bg-primary-500 text-white';

@@ -4,6 +4,7 @@
         header("Location:../");
     }
     $_SESSION['index_answering'] = 0;
+    $_SESSION['markah'] = 0;
 ?>
 
 <?php $location_index = "../.."; include('../../components/head.php');?>

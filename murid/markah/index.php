@@ -10,8 +10,8 @@
                 $murid_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);
                 $id_murid = $murid_value['id_user'];
 
-                $murid_sql = $connect->prepare("SELECT * FROM murid WHERE id_murid = ? ORDER BY markah_murid DESC");
-                $murid_sql->execute([$id_murid]);
+                $murid_sql = $connect->prepare("SELECT * FROM murid WHERE status_murid = 1 ORDER BY markah_murid DESC");
+                $murid_sql->execute([]);
 
             ?>
 
