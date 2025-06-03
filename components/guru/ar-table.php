@@ -83,7 +83,7 @@
                                                 <input disabled type="text" name="markah_murid" id="markah_murid" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="<?php echo $ar['markah1']?>" required />
                                             </div>
                                              <div>
-                                                <label for="markah1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Markah "!"</label>
+                                                <label for="markah1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Markah "?"</label>
                                                 <input disabled type="text" name="markah_murid" id="markah_murid" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="<?php echo $ar['markah2']?>" required />
                                             </div>
                                              <div>
@@ -91,7 +91,7 @@
                                                 <input disabled type="text" name="markah_murid" id="markah_murid" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="<?php echo $ar['markah3']?>" required />
                                             </div>
                                              <div>
-                                                <label for="markah1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Markah "?"</label>
+                                                <label for="markah1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Markah "!"</label>
                                                 <input disabled type="text" name="markah_murid" id="markah_murid" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="<?php echo $ar['markah4']?>" required />
                                             </div>
                                         </form>

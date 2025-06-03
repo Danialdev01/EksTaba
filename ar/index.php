@@ -48,10 +48,11 @@
     </style>
 </head>
 <body>
-    <div class="marker-counter" id="markerCounter">Soalan betul: 0</div>
+    <div class="marker-counter" id="markerCounter">Soalan betul: 0</div> 
 
     <a-scene embedded arjs>
         <!-- Marker 1 -->
+         <!-- . -->
         <a-marker id="marker1" type="pattern" url="../src/assets/marker/pattern/pattern-FL.patt">
             <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
                       material="color: green;" 
@@ -63,7 +64,8 @@
         </a-marker>
 
         <!-- Marker 2 -->
-        <a-marker id="marker2" type="pattern" url="../src/assets/marker/pattern/pattern-LS.patt">
+        <!-- ? -->
+        <a-marker id="marker2" type="pattern" url="../src/assets/marker/pattern/pattern-PL.patt">
             <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
                       material="color: green;" 
                       position="0 1 0">
@@ -74,6 +76,7 @@
         </a-marker>
 
         <!-- Marker 3 -->
+        <!-- , -->
         <a-marker id="marker3" type="pattern" url="../src/assets/marker/pattern/pattern-KH.patt">
             <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
                       material="color: green;" 
@@ -82,9 +85,10 @@
             <a-entity text="value: betul; color: white; align: center;" 
                       position="0 1 -3.1">
             </a-entity>
-        </a-marker>
+        </a-marker> 
 
         <!-- Marker 4 -->
+        <!-- ! -->
         <a-marker id="marker4" type="pattern" url="../src/assets/marker/pattern/pattern-TD.patt">
             <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
                       material="color: green;" 
