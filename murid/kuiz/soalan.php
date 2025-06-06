@@ -125,7 +125,7 @@ $_SESSION['start'] = false;
                         </svg>
                         <!-- <span class="sr-only">Info</span> -->
                         <div>
-                            <span class="font-medium"></span>Berdasarkan ayat dibawah, sila pilih tanda baca yang betul. 
+                            <span class="font-medium"></span>Berdasarkan ayat di bawah, sila pilih tanda baca yang betul. 
                         </div>
                     </div>
                     <div class="danktext-white block max-w-sm p-6 bg-white border border-secondary-200 rounded-lg shadow-sm hover:bg-secondary-100 dankbg-secondary-800 dankborder-secondary-700 dankhover:bg-secondary-700">
