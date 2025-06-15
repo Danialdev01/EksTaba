@@ -28,7 +28,7 @@
 
             $guru = json_decode($hasil, true);
             
-            if($murid['status'] == "success"){
+            if($guru['status'] == "success"){
                 
                 // set session
                 setUser($guru['id_guru'], $guru['katalaluan_guru'], "guru", $secret_key);

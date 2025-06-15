@@ -52,11 +52,11 @@
                 AR Board
                 </a>
             </li>
-            <!-- <li class="shrink-0">
-                <a href="<?php echo $location_index?>/guru/nota/" title="" class="flex text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
-                Nota
+            <li class="shrink-0">
+                <a href="<?php echo $location_index?>/guru/murid/" title="" class="flex text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
+                Murid
                 </a>
-            </li> -->
+            </li>
             <!-- <li class="shrink-0">
                 <a href="<?php echo $location_index?>/user/reports" title="" class="text-sm font-medium text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Reports
@@ -179,11 +179,11 @@
             <a href="<?php echo $location_index?>/guru/kuiz/" class="hover:text-primary-700 text-primary-400">Kuiz</a>
             </li>
             <li>
-            <a href="<?php echo $location_index?>/guru/nota/" class="hover:text-primary-700 text-primary-400">Nota</a>
+            <a href="<?php echo $location_index?>/guru/ar/" class="hover:text-primary-700 text-primary-400">Ar Boar</a>
             </li>
-            <!-- <li>
-            <a href="<?php echo $location_index?>/user/reports" class="hover:text-primary-700 -500">Reports</a>
-            </li> -->
+            <li>
+            <a href="<?php echo $location_index?>/guru/murid/" class="hover:text-primary-700 text-primary-400">Murid</a>
+            </li>
         </ul>
         </div>
     </div>

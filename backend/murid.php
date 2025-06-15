@@ -48,6 +48,7 @@
         }
     }
 
+
     //@ Login
     else if(isset($_POST['login'])){
 
@@ -85,6 +86,7 @@
 
     }
 
+    //@ Signoup
     else if(isset($_POST['signout'])){
 
         if(isset($_POST['user_value_hash'])){
@@ -102,6 +104,24 @@
             header("Location:../");
 
         }
+    }
+
+    //@ Pilih guru
+    else if(isset($_POST['pilih_guru'])){
+        
+        $hasil = pilihGuru($_POST['id_murid'], $_POST['id_guru'], $connect);
+            
+        validateFunction("../log/user_activity_log", "../", $hasil);
+
+        $murid = json_decode($hasil, true);
+        
+        if($murid['status'] == "success"){
+            
+            // redirect murid
+            alert_message("success", "Berjaya kemaskini pelajar");
+            header("Location:../murid/");
+        }
+        
     }
     else{
 

@@ -104,8 +104,53 @@ function createMurid($nama_murid, $email_murid, $katalaluan_murid, $pasti_katala
 
     }
     catch(PDOException $e){
-        return $e;
+        return encodeObj("400", "$e", "error");
         exit;
+    }
+
+}
+
+function pilihGuru($id_murid, $id_guru, $connect){
+
+    try{
+
+        $id_murid = validateInput($id_murid);
+        $id_guru = validateInput($id_guru);
+
+        $check_guru_murid_sql = $connect->prepare("SELECT info_murid FROM murid WHERE id_murid = :id_murid");
+        $check_guru_murid_sql->execute([
+            ":id_murid" => $id_murid
+        ]);
+        $check_guru_murid = $check_guru_murid_sql->fetchColumn();
+
+        if($check_guru_murid == NULL || trim($check_guru_murid) === ''){
+
+            $info_murid = [
+                "id_guru" => $id_guru,
+            ];
+            
+            $info_murid = json_encode($info_murid);
+
+            $update_info_murid_sql = $connect->prepare("UPDATE murid SET info_murid = :info_murid WHERE id_murid = :id_murid");
+            $update_info_murid_sql->execute([
+                ":info_murid" => $info_murid,
+                ":id_murid" => $id_murid
+            ]);
+
+            $status = encodeObj("200", "Berjaya kemaskini murid", "success");
+            $murid = [
+                "id_murid" => $id_murid,
+                "id_guru" => $id_guru,
+            ];
+
+            $murid = json_encode($murid);
+            return addJson($status, $murid);
+        }
+
+    }
+    catch(Exception $e){
+        return encodeObj("400", "$e", "error");
+
     }
 
 }

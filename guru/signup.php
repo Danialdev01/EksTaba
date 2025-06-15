@@ -2,7 +2,8 @@
 
 <body>
     <main class="dankbg-secondary-900 danktext-white">
-        <?php $location_index = ".."; include('../components/guru/nav.php');?>
+
+        <?php $location_index = ".."; $log_location = true; include('../components/nav.php');?>
 
         <?php 
             // include("../backend/function/google-login.php");
@@ -43,6 +44,7 @@
                                     </div> -->
                                 </div>
                                 <!-- <a href="#" class="text-sm font-medium text-primary-600 hover:underline -500">Lupa katalaluan ?</a> -->
+                                <a href="./login.php" class="text-sm font-medium text-white hover:underline -500">Log Masuk guru</a>
                             </div>
 
                             <button name="signup" type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Daftar Masuk</button>
@@ -71,7 +73,7 @@
 
     </main>
 
-    <?php $location_index = "."; include('./components/footer.php')?>
+    <?php $location_index = ".."; include('../components/footer.php')?>
 
 </body>
 </html>

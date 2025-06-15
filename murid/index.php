@@ -3,10 +3,25 @@
 <body>
     <main class="dankbg-plrimary-200">
         <?php $location_index = ".."; include('../components/murid/nav.php');?>
-
+        
         <section>
-
+            
             <?php 
+
+                $murid_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);
+                $id_murid = $murid_value['id_user'];
+
+                $check_murid_info_sql = $connect->prepare("SELECT info_murid FROM murid WHERE id_murid = :id_murid");
+                $check_murid_info_sql->execute([
+                    ":id_murid" => $id_murid
+                ]);
+                $check_murid_info = $check_murid_info_sql->fetchColumn();
+
+                if($check_murid_info == null || trim($check_murid_info) === ''){
+                    echo '<script>setTimeout(function() {window.location.href = "'. $location_index.'/murid/account/guru.php"}, 0);</script>';
+                }
+
+                
                 $murid_value = decryptUser($_SESSION['EksTabaUserHash'], $secret_key);
                 $id_murid = $murid_value['id_user'];
 
@@ -30,6 +45,12 @@
                         <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Masuk</button>
                     </div>
                 </form>
+
+                <div class="max-w-4xl">
+                    <br><br>
+                    <?php $location_index = ".."; include('../components/murid/kuiz-selesai.php')?>
+                    <br><br>
+                </div>
 
             </center>
 

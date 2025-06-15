@@ -15,6 +15,9 @@
         // alert_message("error", "User Not Logged In");
     }
 
+
+    
+
 ?>
 
 <nav class="bg-secondary-800 dankbg-secondary-800 danktext-white antialiased">
@@ -39,11 +42,11 @@
                 Kelas
                 </a>
             </li> -->
-            <li class="shrink-0">
+            <!-- <li class="shrink-0">
                 <a href="<?php echo $location_index?>/murid/kuiz/" title="" class="flex text-sm font-bold text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Kuiz
                 </a>
-            </li>
+            </li> -->
             <li class="shrink-0">
                 <a href="<?php echo $location_index?>/murid/nota/" title="" class="flex text-sm font-bold text-secondary-900 hover:text-primary-700 danktext-white -500">
                 Nota
@@ -128,7 +131,7 @@
             <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
             </svg>              
-            Account
+            Akaun
             <svg class="w-4 h-4 text-white ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
             </svg> 
@@ -136,7 +139,7 @@
 
             <div id="userDropdown1" class="hidden z-10 w-56 divide-y divide-secondary-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow dankdivide-secondary-600 dankbg-secondary-700">
             <ul class="p-2 text-start text-sm font-medium text-secondary-900 danktext-white">
-                <li><a href="<?php echo $location_index?>/murid/account" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-primary-400 text-primary-400 hover:text-white dankhover:bg-secondary-600"> My Account </a></li>
+                <li><a href="<?php echo $location_index?>/murid/account" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-primary-400 text-primary-400 hover:text-white dankhover:bg-secondary-600">Lihat Akaun</a></li>
                 <!-- <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-secondary-100 dark-hover:bg-secondary-600"> My Orders </a></li> -->
                 <!-- <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-secondary-100 dark-hover:bg-secondary-600"> Settings </a></li> -->
                 <!-- <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-secondary-100 dark-hover:bg-secondary-600"> Favourites </a></li> -->
@@ -150,7 +153,7 @@
 
                     <input type="hidden" name="user_value_hash" value="<?php echo $_SESSION['EksTabaUserHash']?>" >
 
-                    <button type="submit" name="signout" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-primary-400 text-primary-400 hover:text-white dankhover:bg-secondary-600">Sign Out</button>
+                    <button type="submit" name="signout" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-primary-400 text-primary-400 hover:text-white dankhover:bg-secondary-600">Log Keluar</button>
                 </form>
                 <!-- <a href="#" title="" > Sign Out </a> -->
             </div>
@@ -172,9 +175,9 @@
             <li>
             <a href="<?php echo $location_index?>/murid/" class="hover:text-primary-700 dark-hover:text-primary-500">Dashboard</a>
             </li>
-            <li>
+            <!-- <li>
             <a href="<?php echo $location_index?>/murid/kuiz/" class="hover:text-primary-700 dark-hover:text-primary-500">Kuiz</a>
-            </li>
+            </li> -->
             <li>
             <a href="<?php echo $location_index?>/murid/nota/" class="hover:text-primary-700 dark-hover:text-primary-500">Nota</a>
             </li>
