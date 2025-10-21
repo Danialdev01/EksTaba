@@ -70,6 +70,12 @@
             $_SESSION['alert-success'] = NULL;
             $_SESSION['alert-info'] = NULL;
         }
+        else{
+            $_SESSION['alert-message'] = NULL;
+            $_SESSION['alert-error'] = NULL;
+            $_SESSION['alert-success'] = NULL;
+            $_SESSION['alert-info'] = NULL;
+        }
 
 
     ?>
