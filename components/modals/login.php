@@ -19,10 +19,11 @@
                             <label for="email_murid" class="block mb-2 text-sm font-medium text-white">E-mel anda</label>
                             <input type="email" name="email_murid" id="email_murid" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" placeholder="nama@domain.com" required="">
                         </div>
-                        <div>
+                        <input type="hidden" name="katalaluan_murid" value="default">
+                        <!-- <div>
                             <label for="katalaluan_murid" class="block mb-2 text-sm font-medium text-white">Katalaluan</label>
                             <input type="password" name="katalaluan_murid" id="password" placeholder="••••••••" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" required="">
-                        </div>
+                        </div> -->
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <!-- <div class="flex items-center h-5">

@@ -4,19 +4,27 @@
     
     function generateGoogleUrl($clientId, $clientSecret, $redirectUri){
 
-        $client = new Google\Client;
-    
-        $client->setClientId($clientId);
-        $client->setClientSecret($clientSecret);
-        $client->setRedirectUri($redirectUri);
-    
-        $client->addScope("email");
-        $client->addScope("profile");
+        try{
 
-        $client->addScope("email");
-        $client->addScope("profile");
+            $client = new Google\Client;
+        
+            $client->setClientId($clientId);
+            $client->setClientSecret($clientSecret);
+            $client->setRedirectUri($redirectUri);
+            
+            $client->addScope("email");
+            $client->addScope("profile");
+    
+            $client->addScope("email");
+            $client->addScope("profile");
 
-        return $client->createAuthUrl();
+            return $client->createAuthUrl();
+        }
+
+        catch (Exception $e) {
+            exit("Error loading Google SDK: " . $e->getMessage());
+        }   
+        
     }
 
     function getGoogleUserInfo($code, $clientId, $clientSecret, $redirectUri){

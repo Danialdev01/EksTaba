@@ -26,7 +26,7 @@ function verifySessionGuru($secret_key, $connect){
         $user_sql->execute([$id_user]);
         $user = $user_sql->fetch(PDO::FETCH_ASSOC);
         
-        if(password_verify($password_user, $user['katalaluan_guru'])){
+        // if(password_verify($password_user, $user['katalaluan_guru'])){
 
             $status = encodeObj("200", "Berjaya log masuk guru", "success");
             
@@ -34,16 +34,16 @@ function verifySessionGuru($secret_key, $connect){
                 "id_guru" => $user['id_guru'],
                 "email_guru" => $user['email_guru'],
                 "nama_guru" => $user['nama_guru'],
-                "katalaluan_guru" => $user_value['password_user']
+                // "katalaluan_guru" => $user_value['password_user']
             ];
             
             $guru = json_encode($guru);
             return addJson($status, $guru);
-        }
-        else{
+        // }
+        // else{
             
-            return encodeObj("400", "Katalaluan tidak sepadan", "error");
-        }
+            // return encodeObj("400", "Katalaluan tidak sepadan", "error");
+        // }
     }
     else{
 
@@ -129,11 +129,11 @@ function checkGuru($email_guru, $katalaluan_guru, $connect){
     }
 
     // check password
-    else if(!(password_verify($katalaluan_guru, $check_user['katalaluan_guru']))){
+    // else if(!(password_verify($katalaluan_guru, $check_user['katalaluan_guru']))){
 
-        return encodeObj("402", "Katalaluan tidak sepadan", "error");
-        exit;
-    }
+    //     return encodeObj("402", "Katalaluan tidak sepadan", "error");
+    //     exit;
+    // }
 
     else{
 

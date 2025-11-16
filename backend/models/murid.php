@@ -14,7 +14,7 @@ function verifySessionMurid($secret_key, $connect){
 
         
         $id_user = validateInput($user_value['id_user']);
-        $password_user = validateInput($user_value['password_user']);
+        // $password_user = validateInput($user_value['password_user']);
         $type_user = validateInput($user_value['type']);
 
         if($type_user != "murid"){
@@ -26,7 +26,7 @@ function verifySessionMurid($secret_key, $connect){
         $user_sql->execute([$id_user]);
         $user = $user_sql->fetch(PDO::FETCH_ASSOC);
         
-        if(password_verify($password_user, $user['katalaluan_murid'])){
+        // if(password_verify($password_user, $user['katalaluan_murid'])){
 
             $status = encodeObj("200", "Berjaya log masuk murid", "success");
             
@@ -34,16 +34,16 @@ function verifySessionMurid($secret_key, $connect){
                 "id_murid" => $user['id_murid'],
                 "email_murid" => $user['email_murid'],
                 "nama_murid" => $user['nama_murid'],
-                "katalaluan_murid" => $user_value['password_user']
+                // "katalaluan_murid" => $user_value['password_user']
             ];
             
             $murid = json_encode($murid);
             return addJson($status, $murid);
-        }
-        else{
+        // }
+        // else{
             
-            return encodeObj("400", "Katalaluan tidak sepadan", "error");
-        }
+            // return encodeObj("400", "Katalaluan tidak sepadan", "error");
+        // }
     }
     else{
 
@@ -158,7 +158,7 @@ function pilihGuru($id_murid, $id_guru, $connect){
 function checkMurid($email_murid, $katalaluan_murid, $connect){
     
     $email_murid = validateInput($email_murid);
-    $katalaluan_murid = validateInput($katalaluan_murid);
+    // $katalaluan_murid = validateInput($katalaluan_murid);
 
     // check user dalam database
     $check_user_sql = $connect->prepare("SELECT * FROM murid WHERE email_murid = ?");
@@ -174,11 +174,10 @@ function checkMurid($email_murid, $katalaluan_murid, $connect){
     }
 
     // check password
-    else if(!(password_verify($katalaluan_murid, $check_user['katalaluan_murid']))){
-
-        return encodeObj("402", "Katalaluan tidak sepadan", "error");
-        exit;
-    }
+    // else if(!(password_verify($katalaluan_murid, $check_user['katalaluan_murid']))){
+    //     return encodeObj("402", "Katalaluan tidak sepadan", "error");
+    //     exit;
+    // }
 
     else{
 
@@ -188,7 +187,7 @@ function checkMurid($email_murid, $katalaluan_murid, $connect){
             "id_murid" => $check_user['id_murid'],
             "email_murid" => $email_murid,
             "nama_murid" => $check_user['nama_murid'],
-            "katalaluan_murid" => $katalaluan_murid
+            // "katalaluan_murid" => $katalaluan_murid
         ];
         
         $murid = json_encode($murid);

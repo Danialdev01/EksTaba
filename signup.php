@@ -25,14 +25,16 @@
                                 <label for="email_murid" class="block mb-2 text-sm font-medium danktext-secondary-900 text-white">E-mel</label>
                                 <input type="email" name="email_murid" id="email_murid" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-blue-500 dankfocus:border-blue-500" placeholder="" required="">
                             </div>
-                            <div>
+                            <input type="hidden" name="katalaluan_murid" value="default">
+                            <input type="hidden" name="pasti_katalaluan_murid" value="default">
+                            <!-- <div>
                                 <label for="katalaluan_murid" class="block mb-2 text-sm font-medium danktext-secondary-900 text-white">Katalaluan</label>
                                 <input type="password" name="katalaluan_murid" id="katalaluan_murid" placeholder="••••••••" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-blue-500 dankfocus:border-blue-500" required="">
                             </div>
                             <div>
                                 <label for="pasti_katalaluan_murid" class="block mb-2 text-sm font-medium danktext-secondary-900 text-white">Tulis semula katalaluan</label>
                                 <input type="password" name="pasti_katalaluan_murid" id="pasti_katalaluan_murid" placeholder="••••••••" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-blue-500 dankfocus:border-blue-500" required="">
-                            </div>
+                            </div> -->
                             <div class="flex items-center justify-between">
                                 <div class="flex items-start">
                                     <!-- <div class="flex items-center h-5">

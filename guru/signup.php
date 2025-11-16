@@ -26,14 +26,16 @@
                                 <label for="email_guru" class="block mb-2 text-sm font-medium text-secondary-900 danktext-white">E-mel anda</label>
                                 <input type="email" name="email_guru" id="email_guru" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" placeholder="nama@domain.com" required="">
                             </div>
-                            <div>
+                            <input type="hidden" name="katalaluan_guru" value="default">
+                            <input type="hidden" name="pasti_katalaluan_guru" value="default">
+                            <!-- <div>
                                 <label for="katalaluan_guru" class="block mb-2 text-sm font-medium text-secondary-900 danktext-white">Katalaluan</label>
                                 <input type="password" name="katalaluan_guru" id="katalaluan_guru" placeholder="••••••••" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" required="">
                             </div>
                             <div>
                                 <label for="pasti_katalaluan_guru" class="block mb-2 text-sm font-medium text-secondary-900 danktext-white">Tulis katalaluan semula</label>
                                 <input type="password" name="pasti_katalaluan_guru" id="pasti_katalaluan_guru" placeholder="••••••••" class="bg-secondary-50 border border-secondary-300 text-secondary-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" required="">
-                            </div>
+                            </div> -->
                             <div class="flex items-center justify-between">
                                 <div class="flex items-start">
                                     <!-- <div class="flex items-center h-5">

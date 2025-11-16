@@ -13,7 +13,7 @@
                 <div class="w-full bg-primary-400 rounded-lg shadow dankborder md:mt-0 sm:max-w-md xl:p-0 dankbg-secondary-800 dankborder-secondary-700">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-secondary-900 md:text-2xl danktext-white">
-                            Login guru
+                            Log Masuk Guru
                         </h1>
                         <form class="space-y-4 md:space-y-6" method="post" action="../backend/guru.php">
                             <input type="hidden" name="token" value="<?php echo $token?>">
@@ -21,10 +21,11 @@
                                 <label for="email_guru" class="block mb-2 text-sm font-medium text-secondary-900 danktext-white">E-mel anda</label>
                                 <input type="email" name="email_guru" id="email_guru" class="bg-secondary-50 border border-secondary-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" placeholder="nama@domain.com" required="">
                             </div>
-                            <div>
+                            <!-- <div>
                                 <label for="katalaluan_guru" class="block mb-2 text-sm font-medium text-secondary-900 danktext-white">Katalaluan</label>
                                 <input type="password" name="katalaluan_guru" id="katalaluan_guru" placeholder="••••••••" class="bg-secondary-50 border border-secondary-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dankbg-secondary-700 dankborder-secondary-600 dankplaceholder-secondary-400 danktext-white dankfocus:ring-primary-500 dankfocus:border-primary-500" required="">
-                            </div>
+                            </div> -->
+                            <input type="hidden" name="katalaluan_guru" value="default">
 
                             <div class="flex items-center justify-between">
                                 <div class="flex items-start">
@@ -38,7 +39,7 @@
                                 <a href="./signup.php" class="text-sm font-medium text-white hover:underline -500">Daftar guru</a>
                             </div>
 
-                            <button name="login" type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Daftar Masuk</button>
+                            <button name="login" type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center dankbg-primary-600 dankhover:bg-primary-700 dankfocus:ring-primary-800">Log Masuk</button>
 
                         </form>
 
