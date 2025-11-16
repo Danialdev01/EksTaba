@@ -140,7 +140,7 @@
                     <div class="chart w-full p-10">
 
                         
-                        <h4 class="text-2xl font-bold text-white">Statistic murid</h4>
+                        <h4 class="text-2xl font-bold text-white">Statistik murid</h4>
 
                         
                         <table id="default-table">
