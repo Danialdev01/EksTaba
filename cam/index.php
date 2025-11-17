@@ -1,14 +1,13 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-    <title>AR Card Game with Multiple Markers</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://aframe.io https://cdn.rawgit.com data: blob: 'unsafe-inline' 'unsafe-eval'">
-    <!-- <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
-    <!-- <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
-    <!-- <script src="../ar.js"></script> -->
-    <!-- <script src="../aframe.js"></script> -->
-    <script src="../src/assets/js/aframe.min.js"></script>
-    <script src="../src/assets/js/aframe-ar.js"></script>
+    <head>
+        <title>AR Card Game with Multiple Markers</title>
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://aframe.io https://cdn.rawgit.com data: blob: 'unsafe-inline' 'unsafe-eval'"> -->
+        <!-- <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
+        <!-- <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
+        <script src="../src/assets/js/aframe.min.js"></script>
+        <script src="../src/assets/js/aframe-ar.js"></script>
     <style>
         body {
             margin: 0;
@@ -52,7 +51,7 @@
 <body>
     <div class="marker-counter" id="markerCounter">Soalan betul: 0</div> 
 
-    <a-scene embedded arjs vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    <a-scene embedded arjs>
         <!-- Marker 1 -->
          <!-- . -->
         <a-marker id="marker1" type="pattern" url="../src/assets/marker/pattern/pattern-FL.patt">
