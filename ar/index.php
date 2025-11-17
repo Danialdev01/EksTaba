@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <!-- Alternative AR.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.3.0/aframe/build/aframe-ar.min.js"></script>
+
+    <!-- Or -->
+    <script src="https://unpkg.com/@ar-js-org/ar.js@3.3.0/aframe/build/aframe-ar.min.js"></script>
+
     <script src="../src/assets/js/aframe.min.js"></script>
     <script src="../src/assets/js/aframe-ar.js"></script>
     <style>
