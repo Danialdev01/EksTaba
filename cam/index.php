@@ -2,29 +2,27 @@
 <html>
 <head>
     <title>AR Card Game with Multiple Markers</title>
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://aframe.io https://cdn.rawgit.com data: blob: 'unsafe-inline' 'unsafe-eval'"> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <!-- <script src="../ar.js"></script> -->
-    <!-- <script src="../aframe.js"></script> -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <style>
         body {
             margin: 0;
             overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         .button-container {
             position: absolute;
-            bottom: 20px; /* Space from the bottom */
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex; /* Use flexbox for layout */
-            justify-content: space-around; /* Space buttons evenly */
-            width: 80%; /* Width of the button container */
-            z-index: 10; /* Ensure buttons are on top */
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            z-index: 10;
         }
         .button {
-            display: none; /* Initially hidden */
-            background-color: #4CAF50; /* Green */
+            display: none;
+            background-color: #4CAF50;
             color: white;
             padding: 15px 32px;
             text-align: center;
@@ -32,71 +30,90 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            flex: 1; /* Allow buttons to grow equally */
-            margin: 0 5px; /* Space between buttons */
+            flex: 1;
+            margin: 0 5px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #45a049;
         }
         .marker-counter {
             position: absolute;
-            top: 20px; /* Space from the top */
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: white; /* Text color */
-            font-weight: bold; /* Bold text */
-            font-size: 24px; /* Font size */
-            z-index: 10; /* Ensure it's on top */
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 24px;
+            z-index: 10;
+            text-align: center;
+        }
+        #resetButton {
+            background-color: #f44336;
+        }
+        #resetButton:hover {
+            background-color: #da190b;
         }
     </style>
 </head>
 <body>
     <div class="marker-counter" id="markerCounter">Soalan betul: 0</div> 
 
-    <a-scene embedded arjs>
+    <a-scene 
+        embedded 
+        arjs="sourceType: webcam; debugUIEnabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        vr-mode-ui="enabled: false">
+        
         <!-- Marker 1 -->
-         <!-- . -->
-        <a-marker id="marker1" type="pattern" url="../src/assets/marker/pattern/pattern-FL.patt">
-            <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
-                      material="color: green;" 
-                      position="0 1 0">
-            </a-entity>
-            <a-entity text="value: betul; color: white; align: center;" 
-                      position="0 1 -3.1">
-            </a-entity>
+        <a-marker id="marker1" type="pattern" url="../src/assets/marker/pattern/pattern-FL.patt" emitevents="true">
+            <a-box position="0 0.25 0" rotation="0 0 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
+            <a-text 
+                value="Betul" 
+                color="white" 
+                align="center" 
+                position="0 0.8 0.1"
+                scale="2 2 2">
+            </a-text>
         </a-marker>
 
         <!-- Marker 2 -->
-        <!-- ? -->
-        <a-marker id="marker2" type="pattern" url="../src/assets/marker/pattern/pattern-PL.patt">
-            <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
-                      material="color: green;" 
-                      position="0 1 0">
-            </a-entity>
-            <a-entity text="value: betul; color: white; align: center;" 
-                      position="0 1 -3.1">
-            </a-entity>
+        <a-marker id="marker2" type="pattern" url="../src/assets/marker/pattern/pattern-PL.patt" emitevents="true">
+            <a-box position="0 0.25 0" rotation="0 0 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
+            <a-text 
+                value="Betul" 
+                color="white" 
+                align="center" 
+                position="0 0.8 0.1"
+                scale="2 2 2">
+            </a-text>
         </a-marker>
 
         <!-- Marker 3 -->
-        <!-- , -->
-        <a-marker id="marker3" type="pattern" url="../src/assets/marker/pattern/pattern-KH.patt">
-            <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
-                      material="color: green;" 
-                      position="0 1 0">
-            </a-entity>
-            <a-entity text="value: betul; color: white; align: center;" 
-                      position="0 1 -3.1">
-            </a-entity>
+        <a-marker id="marker3" type="pattern" url="../src/assets/marker/pattern/pattern-KH.patt" emitevents="true">
+            <a-box position="0 0.25 0" rotation="0 0 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
+            <a-text 
+                value="Betul" 
+                color="white" 
+                align="center" 
+                position="0 0.8 0.1"
+                scale="2 2 2">
+            </a-text>
         </a-marker> 
 
         <!-- Marker 4 -->
-        <!-- ! -->
-        <a-marker id="marker4" type="pattern" url="../src/assets/marker/pattern/pattern-TD.patt">
-            <a-entity geometry="primitive: box; depth: 0.1; height: 0.5; width: 1" 
-                      material="color: green;" 
-                      position="0 1 0">
-            </a-entity>
-            <a-entity text="value: betul; color: white; align: center;" 
-                      position="0 1 -3.1">
-            </a-entity>
+        <a-marker id="marker4" type="pattern" url="../src/assets/marker/pattern/pattern-TD.patt" emitevents="true">
+            <a-box position="0 0.25 0" rotation="0 0 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
+            <a-text 
+                value="Betul" 
+                color="white" 
+                align="center" 
+                position="0 0.8 0.1"
+                scale="2 2 2">
+            </a-text>
         </a-marker>
 
         <a-entity camera></a-entity>
@@ -104,17 +121,25 @@
 
     <div class="button-container">
         <button id="actionButton" class="button">Submit Jawapan</button>
-
         <button id="resetButton" class="button">Mula semula</button>
     </div>
 
     <script>
-        let correctMarkersCount1 = 0; // Counter for correct markers
-        let correctMarkersCount2 = 0; // Counter for correct markers
-        let correctMarkersCount3 = 0; // Counter for correct markers
-        let correctMarkersCount4 = 0; // Counter for correct markers
-        let correctMarkersCountSum = 0; // Counter for correct markers
+        // Initialize tracking for markers
+        let foundMarkers = {
+            marker1: false,
+            marker2: false, 
+            marker3: false,
+            marker4: false
+        };
+        
+        let correctMarkersCountSum = 0;
         const markerCounter = document.getElementById('markerCounter');
+
+        // Function to update counter display
+        function updateCounter() {
+            markerCounter.innerText = `Soalan betul: ${correctMarkersCountSum}`;
+        }
 
         // Function to send points to the backend
         function sendPoints(markerId) {
@@ -126,7 +151,7 @@
                 body: JSON.stringify({ markerId: markerId, points: 1 })
             })
             .then(response => response.json())
-            .then(data =>{
+            .then(data => {
                 console.log('Success:', data);
             })
             .catch((error) => {
@@ -141,11 +166,11 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `markah=${correctMarkersCount1 + correctMarkersCount2 + correctMarkersCount3 + correctMarkersCount4}`
+                body: `markah=${correctMarkersCountSum}`
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = 'hasil.php?markah1=' + correctMarkersCount1 + '&markah2=' + correctMarkersCount2 + '&markah3=' + correctMarkersCount3 + '&markah4=' + correctMarkersCount4;
+                    window.location.href = 'hasil.php?markah=' + correctMarkersCountSum;
                 } else {
                     console.error('Submission failed');
                 }
@@ -155,9 +180,9 @@
             });
         }
 
-        // Action button
-        const actionButton = document.querySelector('#actionButton');
-        const resetButton = document.querySelector('#resetButton');
+        // Button event listeners
+        const actionButton = document.getElementById('actionButton');
+        const resetButton = document.getElementById('resetButton');
 
         actionButton.addEventListener('click', function() {
             if (confirm('Adakah anda pasti untuk menghantar jawapan?')) {
@@ -165,81 +190,57 @@
             }
         });
 
-        //@ Marker 1
-        const marker1 = document.querySelector('#marker1');
-        marker1.addEventListener('markerFound', function() {
-            console.log('Marker 1 found!');
-            actionButton.style.display = 'block'; // Show button when marker is found
-            resetButton.style.display = 'block'; // Show button when marker is found
-            correctMarkersCount1++; // Increment counter
-            correctMarkersCountSum++; // Increment counter
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCountSum}`; // Update display
-            sendPoints('marker1');
+        resetButton.addEventListener('click', function() {
+            if (confirm('Adakah anda pasti untuk mula semula?')) {
+                // Reset all counters and tracking
+                foundMarkers = {
+                    marker1: false,
+                    marker2: false, 
+                    marker3: false,
+                    marker4: false
+                };
+                correctMarkersCountSum = 0;
+                updateCounter();
+                actionButton.style.display = 'none';
+                resetButton.style.display = 'none';
+            }
         });
 
-        marker1.addEventListener('markerLost', function() {
-            // actionButton1.style.display = 'none'; // Hide button when marker is lost
-            // correctMarkersCount--; // Decrement countera
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCount}`; // Update display
-            console.log('Marker 1 lost!');
-        });
+        // Marker event handlers
+        function setupMarkerEvents(markerId) {
+            const marker = document.getElementById(markerId);
+            
+            marker.addEventListener('markerFound', function() {
+                console.log(`${markerId} found!`);
+                
+                if (!foundMarkers[markerId]) {
+                    foundMarkers[markerId] = true;
+                    correctMarkersCountSum++;
+                    updateCounter();
+                    sendPoints(markerId);
+                }
+                
+                actionButton.style.display = 'block';
+                resetButton.style.display = 'block';
+            });
 
-        //@ Marker 2
-        const marker2 = document.querySelector('#marker2');
-        marker2.addEventListener('markerFound', function() {
-            actionButton.style.display = 'block'; // Show button when marker is found
-            resetButton.style.display = 'block'; // Show button when marker is found
-            console.log('Marker 2 found!');
-            correctMarkersCount2++; // Increment counter
-            correctMarkersCountSum++; // Increment counter
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCountSum}`; // Update display
-            sendPoints('marker2');
-        });
+            marker.addEventListener('markerLost', function() {
+                console.log(`${markerId} lost!`);
+                // Don't decrement counter when marker is lost
+                // This prevents the count from going down when marker visibility is temporary
+            });
+        }
 
-        marker2.addEventListener('markerLost', function() {
-            correctMarkersCount--; // Decrement counter
-            markerCounter.innerText = `Correct Markers: ${correctMarkersCountSum}`; // Update display
-            console.log('Marker 2 lost!');
-        });
+        // Initialize all markers
+        setupMarkerEvents('marker1');
+        setupMarkerEvents('marker2');
+        setupMarkerEvents('marker3');
+        setupMarkerEvents('marker4');
 
-        //@ Marker 3
-        const marker3 = document.querySelector('#marker3');
-        marker3.addEventListener('markerFound', function() {
-            actionButton.style.display = 'block'; // Show button when marker is found
-            resetButton.style.display = 'block'; // Show button when marker is found
-            console.log('Marker 3 found!');
-            correctMarkersCount3++; // Increment counter
-            correctMarkersCountSum++; // Increment counter
-            markerCounter.innerText = `Soalan betul: ${correctMarkersCountSum}`; // Update display
-            sendPoints('marker3');
+        // Initialize the scene
+        document.querySelector('a-scene').addEventListener('loaded', function() {
+            console.log('A-Frame scene loaded successfully');
         });
-
-        marker3.addEventListener('markerLost', function() {
-            // actionButton.style.display = 'block'; // Show button when marker is found
-            correctMarkersCount--; // Decrement counter
-            markerCounter.innerText = `Soalan betul: ${correctMarkersCount}`; // Update display
-            console.log('Marker 3 lost!');
-        });
-
-        //@ Marker 4
-        const marker4 = document.querySelector('#marker4');
-        marker4.addEventListener('markerFound', function() {
-            actionButton.style.display = 'block'; // Show button when marker is found
-            resetButton.style.display = 'block'; // Show button when marker is found
-            console.log('Marker 4 found!');
-            correctMarkersCount4++; // Increment counter
-            correctMarkersCountSum++; // Increment counter
-            markerCounter.innerText = `Soalan betul: ${correctMarkersCountSum}`; // Update display
-            sendPoints('marker4');
-        });
-
-        marker4.addEventListener('markerLost', function() {
-            // actionButton4.style.display = 'none'; // Hide button when marker is lost
-            correctMarkersCount--; // Decrement counter
-            markerCounter.innerText = `Soaaln betul: ${correctMarkersCount}`; // Update display
-            console.log('Marker 4 lost!');
-        });
-        
     </script>
 </body>
 </html>
