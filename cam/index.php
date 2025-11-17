@@ -4,19 +4,16 @@
     <title>AR Card Game dengan Multiple Markers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- GUNAKAN VERSI INI - paling stabil -->
-    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.0/aframe/build/aframe-ar.js"></script> -->
-
-    <!-- Cuba kombinasi ini -->
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.2.0/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <!-- GUNAKAN VERSI INI - KOMBINASI YANG BETUL -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.0/aframe/build/aframe-ar.js"></script>
     
     <style>
         body {
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
+            background: black;
         }
         .button-container {
             position: absolute;
@@ -26,7 +23,7 @@
             display: flex;
             justify-content: space-around;
             width: 80%;
-            z-index: 10;
+            z-index: 1000;
         }
         .button {
             display: none;
@@ -41,6 +38,7 @@
             flex: 1;
             margin: 0 5px;
             font-size: 16px;
+            z-index: 1001;
         }
         .button:hover {
             background-color: #45a049;
@@ -56,7 +54,7 @@
             border-radius: 5px;
             font-weight: bold;
             font-size: 24px;
-            z-index: 10;
+            z-index: 1000;
             text-align: center;
         }
         #resetButton {
@@ -66,7 +64,6 @@
             background-color: #da190b;
         }
         
-        /* Loading indicator */
         .loading {
             position: absolute;
             top: 50%;
@@ -74,41 +71,63 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 20px;
-            z-index: 100;
+            z-index: 1000;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .debug-info {
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+            max-width: 300px;
         }
     </style>
 </head>
 <body>
     <div class="loading" id="loading">Loading AR Camera...</div>
-    <div class="marker-counter" id="markerCounter">Soalan betul: 0</div> 
+    <div class="marker-counter" id="markerCounter">Soalan betul: 0</div>
+    <div class="debug-info" id="debugInfo">
+        Status: Initializing...<br>
+        A-Frame: Loading...<br>
+        AR.js: Loading...
+    </div>
 
-    <!-- Scene configuration yang lebih simple -->
+    <!-- Scene configuration yang betul -->
     <a-scene 
         embedded 
-        arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 640; canvasHeight: 480;'
-        renderer="antialias: true; alpha: true"
-        vr-mode-ui="enabled: false">
+        arjs="sourceType: webcam; debugUIEnabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        vr-mode-ui="enabled: false"
+        stats>
         
         <!-- Marker 1 -->
-        <a-marker id="marker1" type="pattern" url="../src/assets/marker/pattern/pattern-FL.patt" emitevents="true" smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="5">
+        <a-marker id="marker1" type="pattern" url="../src/assets/marker/pattern/pattern-FL.patt" emitevents="true">
             <a-box position="0 0.25 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
             <a-text value="Betul" color="white" align="center" position="0 0.8 0.1" scale="1.5 1.5 1.5"></a-text>
         </a-marker>
 
         <!-- Marker 2 -->
-        <a-marker id="marker2" type="pattern" url="../src/assets/marker/pattern/pattern-PL.patt" emitevents="true" smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="5">
+        <a-marker id="marker2" type="pattern" url="../src/assets/marker/pattern/pattern-PL.patt" emitevents="true">
             <a-box position="0 0.25 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
             <a-text value="Betul" color="white" align="center" position="0 0.8 0.1" scale="1.5 1.5 1.5"></a-text>
         </a-marker>
 
         <!-- Marker 3 -->
-        <a-marker id="marker3" type="pattern" url="../src/assets/marker/pattern/pattern-KH.patt" emitevents="true" smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="5">
+        <a-marker id="marker3" type="pattern" url="../src/assets/marker/pattern/pattern-KH.patt" emitevents="true">
             <a-box position="0 0.25 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
             <a-text value="Betul" color="white" align="center" position="0 0.8 0.1" scale="1.5 1.5 1.5"></a-text>
         </a-marker>
 
         <!-- Marker 4 -->
-        <a-marker id="marker4" type="pattern" url="../src/assets/marker/pattern/pattern-TD.patt" emitevents="true" smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="5">
+        <a-marker id="marker4" type="pattern" url="../src/assets/marker/pattern/pattern-TD.patt" emitevents="true">
             <a-box position="0 0.25 0" width="1" height="0.5" depth="0.1" color="green"></a-box>
             <a-text value="Betul" color="white" align="center" position="0 0.8 0.1" scale="1.5 1.5 1.5"></a-text>
         </a-marker>
@@ -122,11 +141,28 @@
     </div>
 
     <script>
-        // Tunggu scene load dulu
-        document.querySelector('a-scene').addEventListener('loaded', function() {
-            console.log('Scene loaded successfully');
-            document.getElementById('loading').style.display = 'none';
-        });
+        // Debug info
+        const debugInfo = document.getElementById('debugInfo');
+        function updateDebugInfo(message) {
+            debugInfo.innerHTML += message + '<br>';
+            console.log('DEBUG:', message);
+        }
+
+        updateDebugInfo('Script started...');
+
+        // Check if A-Frame is loaded
+        if (typeof AFRAME === 'undefined') {
+            updateDebugInfo('ERROR: A-Frame not loaded');
+        } else {
+            updateDebugInfo('A-Frame loaded successfully');
+        }
+
+        // Check if AR.js is loaded
+        if (typeof THREEx === 'undefined') {
+            updateDebugInfo('ERROR: AR.js not loaded properly');
+        } else {
+            updateDebugInfo('AR.js loaded successfully');
+        }
 
         // Initialize tracking
         let foundMarkers = {
@@ -143,8 +179,55 @@
             markerCounter.innerText = `Soalan betul: ${correctMarkersCountSum}`;
         }
 
+        // Scene event listeners
+        const scene = document.querySelector('a-scene');
+        
+        scene.addEventListener('loaded', function() {
+            updateDebugInfo('Scene loaded successfully');
+            document.getElementById('loading').style.display = 'none';
+            
+            // Initialize markers after scene is loaded
+            initializeMarkers();
+        });
+
+        scene.addEventListener('arjs-mode-ready', function() {
+            updateDebugInfo('AR.js mode ready');
+        });
+
+        function initializeMarkers() {
+            updateDebugInfo('Initializing markers...');
+            
+            const markerIds = ['marker1', 'marker2', 'marker3', 'marker4'];
+            
+            markerIds.forEach(function(markerId) {
+                const marker = document.getElementById(markerId);
+                if (marker) {
+                    updateDebugInfo(markerId + ' found in DOM');
+                    
+                    marker.addEventListener('markerFound', function() {
+                        updateDebugInfo(markerId + ' detected!');
+                        
+                        if (!foundMarkers[markerId]) {
+                            foundMarkers[markerId] = true;
+                            correctMarkersCountSum++;
+                            updateCounter();
+                            sendPoints(markerId);
+                        }
+                        
+                        document.getElementById('actionButton').style.display = 'block';
+                        document.getElementById('resetButton').style.display = 'block';
+                    });
+
+                    marker.addEventListener('markerLost', function() {
+                        updateDebugInfo(markerId + ' lost');
+                    });
+                } else {
+                    updateDebugInfo('ERROR: ' + markerId + ' not found in DOM');
+                }
+            });
+        }
+
         function sendPoints(markerId) {
-            // Gunakan FormData untuk lebih compatible
             const formData = new FormData();
             formData.append('markerId', markerId);
             formData.append('points', '1');
@@ -156,9 +239,11 @@
             .then(response => response.text())
             .then(data => {
                 console.log('Success:', data);
+                updateDebugInfo('Points sent for ' + markerId);
             })
             .catch((error) => {
                 console.error('Error:', error);
+                updateDebugInfo('Error sending points for ' + markerId);
             });
         }
 
@@ -206,47 +291,15 @@
                 updateCounter();
                 actionButton.style.display = 'none';
                 resetButton.style.display = 'none';
+                updateDebugInfo('Reset completed');
             }
         });
 
-        // Setup marker events dengan delay untuk pastikan scene ready
-        setTimeout(function() {
-            ['marker1', 'marker2', 'marker3', 'marker4'].forEach(function(markerId) {
-                const marker = document.getElementById(markerId);
-                if (marker) {
-                    marker.addEventListener('markerFound', function() {
-                        console.log(markerId + ' found!');
-                        
-                        if (!foundMarkers[markerId]) {
-                            foundMarkers[markerId] = true;
-                            correctMarkersCountSum++;
-                            updateCounter();
-                            sendPoints(markerId);
-                        }
-                        
-                        actionButton.style.display = 'block';
-                        resetButton.style.display = 'block';
-                    });
-
-                    marker.addEventListener('markerLost', function() {
-                        console.log(markerId + ' lost!');
-                    });
-                }
-            });
-        }, 2000); // Delay 2 saat untuk pastikan semua loaded
-    </script>
-
-    <script>
-    // Fallback jika version conflict
-    window.addEventListener('error', function(e) {
-        if (e.message.includes('registerComponent') || e.message.includes('systems')) {
-            console.log('Retrying with compatible versions...');
-            // Reload dengan versions yang berbeza
-            if (!window.location.search.includes('retry=1')) {
-                window.location.href = window.location.pathname + '?retry=1';
-            }
-        }
-    });
+        // Fallback for errors
+        window.addEventListener('error', function(e) {
+            updateDebugInfo('Global error: ' + e.message);
+            console.error('Global error:', e);
+        });
     </script>
 </body>
 </html>
