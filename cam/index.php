@@ -235,5 +235,18 @@
             });
         }, 2000); // Delay 2 saat untuk pastikan semua loaded
     </script>
+
+    <script>
+    // Fallback jika version conflict
+    window.addEventListener('error', function(e) {
+        if (e.message.includes('registerComponent') || e.message.includes('systems')) {
+            console.log('Retrying with compatible versions...');
+            // Reload dengan versions yang berbeza
+            if (!window.location.search.includes('retry=1')) {
+                window.location.href = window.location.pathname + '?retry=1';
+            }
+        }
+    });
+    </script>
 </body>
 </html>
